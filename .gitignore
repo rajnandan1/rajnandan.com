@@ -1,0 +1,21 @@
+# Zola build output
+public/
+
+# Generated CSS files
+hl-dark.css
+hl-light.css
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Temp files
+*.tmp
+*.bak
