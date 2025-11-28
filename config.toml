@@ -3,7 +3,7 @@
 
 base_url = "https://rajnandan.com"
 title = "Raj Nandan Sharma"
-description = "Tech enthusiast, dabbles in Go, Svelte, NodeJS. Director of Engineering at Cashfree Payments."
+description = "Tech enthusiast, dabbles in Go, Svelte, NodeJS, TypeScript. Director of Engineering at Cashfree Payments."
 default_language = "en"
 theme = "serene"
 output_dir = "public"

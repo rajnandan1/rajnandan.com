@@ -7,7 +7,7 @@ footer = true
 
 name = "Raj Nandan Sharma"
 id = "rajnandan1"
-bio = "Tech enthusiast • Go, Svelte, NodeJS • Director of Engineering"
+bio = "Tech enthusiast • Go, Svelte, NodeJS, TypeScript • Director of Engineering"
 avatar = "img/avatar.jpg"
 
 links = [
@@ -23,7 +23,7 @@ recent_more_text = "more posts »"
 date_format = "%b %-d, %Y"
 +++
 
-I'm Raj Nandan Sharma—a full-stack engineer and engineering director based in Bengaluru, India. I build products end-to-end and enjoy taking ideas from the sketchpad to production. I've been writing code since 2012, mostly in **Go**, **Svelte**, and **NodeJS**.
+I'm Raj Nandan Sharma—a full-stack engineer and engineering director based in Bengaluru, India. I build products end-to-end and enjoy taking ideas from the sketchpad to production. I've been writing code since 2012, mostly in **Go**, **Svelte**, **NodeJS**, and **TypeScript**.
 
 My work sits at the intersection of fintech, AI, and developer tooling. At [Cashfree Payments](https://cashfree.com), I lead teams shipping high-scale payment systems. I've built search pipelines, crafted authentication flows, and designed internal platforms that keep businesses running. I like solving blunt, real problems—downtimes, latency, alerts, data modeling, shipping stable builds without drama.
 
