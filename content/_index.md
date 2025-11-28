@@ -23,12 +23,14 @@ recent_more_text = "more posts »"
 date_format = "%b %-d, %Y"
 +++
 
-Hello everyone! I'm Raj Nandan Sharma.
+I'm Raj Nandan Sharma—a full-stack engineer and engineering director based in Bengaluru, India. I build products end-to-end and enjoy taking ideas from the sketchpad to production. I've been writing code since 2012, mostly in **Go**, **Svelte**, and **NodeJS**.
 
-I have been writing code since 2012. To me writing code relaxes me, I mostly code in **Go**, **Svelte**, and **NodeJS**. I prefer simplicity and minimalism in both code and design. I have built software used by millions of users.
+My work sits at the intersection of fintech, AI, and developer tooling. At [Cashfree Payments](https://cashfree.com), I lead teams shipping high-scale payment systems. I've built search pipelines, crafted authentication flows, and designed internal platforms that keep businesses running. I like solving blunt, real problems—downtimes, latency, alerts, data modeling, shipping stable builds without drama.
 
-I work at [Cashfree Payments](https://cashfree.com) as a Director of Engineering in Bengaluru, India.
+On the side, I experiment with solo projects: agent-driven back-office tools, vector-based search for large text sources, regulatory-monitoring automation, browser-based terminals, bookmark managers, and status-page integrations. I keep a steady bias toward practical engineering—fewer moving parts, predictable behavior, clean interfaces.
 
-I also indulge in gaming from time to time. My online alias is **purplewow**. I used to do multiplayer gaming, but now I mostly play single player games. I love souls-like games.
+I'm currently exploring solopreneurship and ways to turn engineering projects into usable products. If a system needs to be scraped, monitored, indexed, embedded, automated, or debugged at 2am, I'm usually interested.
 
-I have a keen eye for good UX and UI, believing that perfection is achieved when there is nothing left to remove from a design.
+I also game from time to time. My online alias is **purplewow**—mostly single-player, mostly souls-likes.
+
+Technology should make life quieter, not louder. My work reflects that.
