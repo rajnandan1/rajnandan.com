@@ -1,8 +1,8 @@
 +++
 title = "Stripe's Agentic Commerce Protocol: Building the Rails for AI-Powered Commerce"
 description = "A deep dive into Stripe's new Agentic Commerce Protocol (ACP) - how it works, its architecture, and what it means for the future of AI agents making purchases on behalf of users."
-date = 2024-11-28
-updated = 2024-11-28
+date = 2025-11-28
+updated = 2025-11-28
 
 [taxonomies]
 tags = ["stripe", "ai", "agents", "payments", "mcp"]
