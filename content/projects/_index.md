@@ -13,6 +13,12 @@ Here are few of my personal projects that I am working on. Some of them are at [
 
 ---
 
+### [PaperPin](https://paperpin.ai)
+
+PaperPin is an AI-powered survey platform that uses synthetic respondents to deliver research insights in minutes. Run concept tests, NPS surveys, UX studies, pricing research, and more—without recruiting human panels. It achieves 95% correlation with traditional human panel surveys.
+
+---
+
 ### [OkBookmarks](https://www.okbookmarks.com)
 
 Okbookmarks is an app that lets you save your bookmarks and search them easily. It is written using golang and svelte. It also comes with a chrome extension and mozilla add-on. It can also be installed as a stand alone app since it is a PWA.
