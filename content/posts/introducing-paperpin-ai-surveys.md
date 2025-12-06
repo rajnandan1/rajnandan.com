@@ -17,10 +17,10 @@ I've been working on a new project called [PaperPin](https://paperpin.ai)—an A
 
 If you've ever run user research, you know the pain:
 
-- **Recruiting takes weeks.** Finding the right respondents, screening them, scheduling—it's a logistics nightmare.
-- **Panels are expensive.** Quality respondents cost money, and costs scale linearly with sample size.
-- **Turnaround is slow.** By the time you get results, the product has already shipped or the decision has been made.
-- **Niche audiences are nearly impossible.** Good luck finding 50 CFOs of mid-market SaaS companies who will take your survey.
+-   **Recruiting takes weeks.** Finding the right respondents, screening them, scheduling—it's a logistics nightmare.
+-   **Panels are expensive.** Quality respondents cost money, and costs scale linearly with sample size.
+-   **Turnaround is slow.** By the time you get results, the product has already shipped or the decision has been made.
+-   **Niche audiences are nearly impossible.** Good luck finding 50 CFOs of mid-market SaaS companies who will take your survey.
 
 Traditional survey panels work, but they're slow, expensive, and don't scale well for rapid iteration.
 
@@ -48,12 +48,12 @@ Results are calibrated against real human data. PaperPin achieves **95% correlat
 
 PaperPin supports multiple research campaign types:
 
-- **Concept & Product Testing** — Test new product ideas, measure purchase intent, validate product-market fit
-- **Brand & Market Research** — Measure brand awareness, evaluate positioning, analyze competitors
-- **Customer Insights** — Track CSAT, measure NPS, identify what drives customer advocacy
-- **UX Testing** — Gather detailed product feedback, evaluate usability, prioritize features
-- **Ad & Message Testing** — Measure ad effectiveness, test messaging variants, compare value propositions
-- **Pricing Research** — Understand price sensitivity, estimate willingness to pay, optimize pricing strategy
+-   **Concept & Product Testing** — Test new product ideas, measure purchase intent, validate product-market fit
+-   **Brand & Market Research** — Measure brand awareness, evaluate positioning, analyze competitors
+-   **Customer Insights** — Track CSAT, measure NPS, identify what drives customer advocacy
+-   **UX Testing** — Gather detailed product feedback, evaluate usability, prioritize features
+-   **Ad & Message Testing** — Measure ad effectiveness, test messaging variants, compare value propositions
+-   **Pricing Research** — Understand price sensitivity, estimate willingness to pay, optimize pricing strategy
 
 ## Why Synthetic Respondents?
 
@@ -61,10 +61,10 @@ I built PaperPin because I kept running into the same problem: I needed quick fe
 
 Synthetic respondents aren't a replacement for all human research. They're a tool for:
 
-- **Early-stage validation** when you need directional insights fast
-- **Rapid iteration** when you're testing multiple variants
-- **Niche audiences** that are hard or expensive to recruit
-- **Budget-conscious research** when panel costs don't make sense
+-   **Early-stage validation** when you need directional insights fast
+-   **Rapid iteration** when you're testing multiple variants
+-   **Niche audiences** that are hard or expensive to recruit
+-   **Budget-conscious research** when panel costs don't make sense
 
 The goal isn't perfect fidelity—it's getting useful signal quickly so you can make better decisions faster.
 
@@ -85,10 +85,10 @@ The results include both quantitative metrics and rich qualitative insights—th
 
 PaperPin has a generous free tier:
 
-- **Free:** 10 respondents per survey, 5 surveys per month
-- **Plus ($9/mo):** 100 respondents, 50 surveys, premium AI models
-- **Pro ($29/mo):** 1,000 respondents, 500 surveys, export reports
-- **Ultra ($99/mo):** 100,000 respondents, 5,000 surveys, priority support
+-   **Free:** 10 respondents per survey, 5 surveys per month
+-   **Plus ($9/mo):** 100 respondents, 50 surveys, premium AI models
+-   **Pro ($29/mo):** 1,000 respondents, 500 surveys, export reports
+-   **Ultra ($99/mo):** 100,000 respondents, 5,000 surveys, priority support
 
 No credit card required to start. You get 500 free credits to try it out.
 
