@@ -19,9 +19,11 @@ PaperPin is an AI-powered survey platform that uses synthetic respondents to del
 
 ---
 
-### [OkBookmarks](https://www.okbookmarks.com)
+### [Smaraka](https://github.com/rajnandan1/smaraka)
 
-Okbookmarks is an app that lets you save your bookmarks and search them easily. It is written using golang and svelte. It also comes with a chrome extension and mozilla add-on. It can also be installed as a stand alone app since it is a PWA.
+Smaraka is a simple and easy to use library for creating and managing bookmarks. Built with Go and Svelte, it lets you store and access your bookmarks whenever you want. The name comes from Sanskrit, meaning "Memorial" or "Monument."
+
+![GitHub Repo stars](https://img.shields.io/github/stars/rajnandan1/smaraka?style=flat-square)
 
 ---
 
@@ -33,15 +35,19 @@ Kener is a Modern Looking Self hosted Status Page, batteries included. It is wri
 
 ---
 
-### [Frogment](https://www.frogment.com)
+### [Frogment](https://github.com/rajnandan1/frogment)
 
-Frogment is a OpenAPI spec editor but better. It is written using nodejs and JQuery. It lets us manage a large OpenAPI spec with ease.
+Frogment is a OpenAPI spec editor but better. It is written using Node.js and JQuery. It lets us manage a large OpenAPI spec with ease.
+
+![GitHub Repo stars](https://img.shields.io/github/stars/rajnandan1/frogment?style=flat-square)
 
 ---
 
-### [Frogment MacOS app](https://www.frogment.app)
+### [Frogment App](https://github.com/rajnandan1/frogmentapp)
 
-Frogment APP is a mac os app. It is built using Tauri/Rust/Svelte. It is a desktop version of Frogment with new features.
+Frogment App is a macOS desktop app built using Tauri, Rust, and Svelte. It is a desktop version of Frogment with new features.
+
+![GitHub Repo stars](https://img.shields.io/github/stars/rajnandan1/frogmentapp?style=flat-square)
 
 ---
 
