@@ -19,10 +19,10 @@ Three years into the generative AI era, this is the defining tension.
 
 The numbers tell a clear story:
 
-- **88%** of organizations are using AI in at least one business function (up from 78% last year)
-- **62%** are experimenting with AI agents
-- But only **39%** report any EBIT impact at the enterprise level
-- And most of those say AI accounts for less than **5%** of EBIT
+-   **88%** of organizations are using AI in at least one business function (up from 78% last year)
+-   **62%** are experimenting with AI agents
+-   But only **39%** report any EBIT impact at the enterprise level
+-   And most of those say AI accounts for less than **5%** of EBIT
 
 Nearly nine in ten companies are using AI. Fewer than four in ten see it on their bottom line.
 
@@ -40,14 +40,15 @@ The pattern is familiar from every previous wave of enterprise technology: early
 
 Agents are the hot topic, and the numbers reflect it:
 
-- **62%** are at least experimenting with AI agents
-- **23%** are scaling agentic AI somewhere in the enterprise
-- But in any given function, **no more than 10%** are scaling agents
+-   **62%** are at least experimenting with AI agents
+-   **23%** are scaling agentic AI somewhere in the enterprise
+-   But in any given function, **no more than 10%** are scaling agents
 
 Agent adoption is highest in:
-- **IT and knowledge management** (service-desk automation, deep research)
-- **Tech, media, and telecom** industries
-- **Healthcare**
+
+-   **IT and knowledge management** (service-desk automation, deep research)
+-   **Tech, media, and telecom** industries
+-   **Healthcare**
 
 The pattern here is revealing: agents work best where the use case is narrow, repeatable, and the cost of errors is manageable. IT service desks. Document retrieval. Scheduling. The more open-ended the task, the harder it is to scale.
 
@@ -93,11 +94,11 @@ You can't pilot your way to transformation.
 
 Expectations are mixed:
 
-- **43%** expect no change in workforce size due to AI
-- **32%** expect workforce reductions of 3%+ in the next year
-- **13%** expect increases of 3%+
+-   **43%** expect no change in workforce size due to AI
+-   **32%** expect workforce reductions of 3%+ in the next year
+-   **13%** expect increases of 3%+
 
-What's interesting: larger organizations are more likely to expect reductions. And AI high performers are more likely to expect *change*—in either direction.
+What's interesting: larger organizations are more likely to expect reductions. And AI high performers are more likely to expect _change_—in either direction.
 
 Meanwhile, most organizations are **hiring for AI roles**—particularly software engineers and data engineers. Even as some functions shrink, the demand for AI talent is growing.
 
@@ -105,12 +106,13 @@ Meanwhile, most organizations are **hiring for AI roles**—particularly softwar
 
 The good news: organizations are starting to take AI risks seriously.
 
-- In 2022, organizations were mitigating an average of **2 AI-related risks**
-- In 2025, that number is **4**
+-   In 2022, organizations were mitigating an average of **2 AI-related risks**
+-   In 2025, that number is **4**
 
 The most common consequences experienced:
-- **Inaccuracy** (31% of respondents)
-- Followed by explainability issues, privacy concerns, and regulatory compliance
+
+-   **Inaccuracy** (31% of respondents)
+-   Followed by explainability issues, privacy concerns, and regulatory compliance
 
 High performers—who have deployed more use cases—are more likely to experience negative consequences, particularly around IP infringement and regulatory compliance. But they're also more likely to have mitigation measures in place.
 
