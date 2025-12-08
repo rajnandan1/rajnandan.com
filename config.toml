@@ -38,7 +38,6 @@ sections = [
   { name = "blog", path = "/posts", is_external = false },
   { name = "projects", path = "/projects", is_external = false },
   { name = "books", path = "/books", is_external = false },
-  { name = "games", path = "/games", is_external = false },
   { name = "contact", path = "/contact", is_external = false },
   { name = "support", path = "/support", is_external = false },
 ]
