@@ -19,6 +19,14 @@ PaperPin is an AI-powered survey platform that uses synthetic respondents to del
 
 ---
 
+### [Termo](https://github.com/rajnandan1/termo)
+
+Termo is a simple terminal emulator for the browser, inspired by [stripe.dev](https://stripe.dev/). It's a wrapper on top of xterm.js with customizable title, prompt, font, theme, sound effects, and the ability to add and execute any JavaScript as commands.
+
+![GitHub Repo stars](https://img.shields.io/github/stars/rajnandan1/termo?style=flat-square)
+
+---
+
 ### [Smaraka](https://github.com/rajnandan1/smaraka)
 
 Smaraka is a simple and easy to use library for creating and managing bookmarks. Built with Go and Svelte, it lets you store and access your bookmarks whenever you want. The name comes from Sanskrit, meaning "Memorial" or "Monument."
