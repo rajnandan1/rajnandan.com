@@ -12,16 +12,18 @@ Memoization is elegantly simple: cache a function's results by its inputs. When 
 
 ## The Problem: Counting Paths Up Stairs
 
-Imagine a staircase where you can climb 1, 3, or 5 steps at a time. How many distinct ways can you reach step $n$?
+Imagine a staircase where you can climb 1, 3, or 5 steps at a time. How many distinct ways can you reach step `n`?
 
-Let $f(n)$ be the count of ways. The recurrence relation is:
+Let `f(n)` be the count of ways. The recurrence relation is:
 
-$$f(n) = f(n-1) + f(n-3) + f(n-5)$$
+```
+f(n) = f(n-1) + f(n-3) + f(n-5)
+```
 
 With base cases:
 
--   $f(0) = 1$ — one valid way: do nothing
--   $f(n) = 0$ when $n < 0$ — invalid path
+-   `f(0) = 1` — one valid way: do nothing
+-   `f(n) = 0` when `n < 0` — invalid path
 
 ## Naive Recursion: Clean but Catastrophically Slow
 
@@ -153,7 +155,7 @@ function memoizeWithLRU<T extends (...args: any[]) => any>(
 
 Memoization transforms a branching recursion tree into a directed acyclic graph. Each unique input becomes a single node. Compute once, reuse forever.
 
-Think of counting items in a box. You write "8" on a sticky note. When you add one more, you don't recount—you read "8" and add "1". Memoization is that sticky note.
+It's like saving a phone number in your contacts. The first time someone gives you their number, you type it in. Every time after that, you just look it up instead of asking again. Memoization is your contact list for function results.
 
 ## When to Reach for Memoization
 
@@ -191,9 +193,9 @@ function stepCountDP(n: number, steps: number[] = [1, 3, 5]): number {
 }
 ```
 
--   **Time**: $O(n \cdot |\text{steps}|)$
--   **Space**: $O(n)$
--   **No recursion**: avoids stack overflow for large $n$
+-   **Time**: O(n × number of steps)
+-   **Space**: O(n)
+-   **No recursion**: avoids stack overflow for large `n`
 
 ## Choosing Your Approach
 
