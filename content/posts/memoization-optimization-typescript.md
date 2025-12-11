@@ -19,16 +19,17 @@ Let $f(n)$ be the count of ways. The recurrence relation is:
 $$f(n) = f(n-1) + f(n-3) + f(n-5)$$
 
 With base cases:
-- $f(0) = 1$ — one valid way: do nothing
-- $f(n) = 0$ when $n < 0$ — invalid path
+
+-   $f(0) = 1$ — one valid way: do nothing
+-   $f(n) = 0$ when $n < 0$ — invalid path
 
 ## Naive Recursion: Clean but Catastrophically Slow
 
 ```typescript
 function stepCount(n: number): number {
-  if (n < 0) return 0;
-  if (n === 0) return 1;
-  return stepCount(n - 1) + stepCount(n - 3) + stepCount(n - 5);
+    if (n < 0) return 0;
+    if (n === 0) return 1;
+    return stepCount(n - 1) + stepCount(n - 3) + stepCount(n - 5);
 }
 ```
 
@@ -44,19 +45,20 @@ Store results by input. On repeat calls, return the stored value instantly.
 
 ```typescript
 function memoSteps(n: number, cache: Map<number, number> = new Map()): number {
-  if (n < 0) return 0;
-  if (n === 0) return 1;
-  
-  if (cache.has(n)) {
-    return cache.get(n)!;
-  }
-  
-  const result = memoSteps(n - 1, cache) 
-               + memoSteps(n - 3, cache) 
-               + memoSteps(n - 5, cache);
-  
-  cache.set(n, result);
-  return result;
+    if (n < 0) return 0;
+    if (n === 0) return 1;
+
+    if (cache.has(n)) {
+        return cache.get(n)!;
+    }
+
+    const result =
+        memoSteps(n - 1, cache) +
+        memoSteps(n - 3, cache) +
+        memoSteps(n - 5, cache);
+
+    cache.set(n, result);
+    return result;
 }
 ```
 
@@ -68,26 +70,26 @@ Rather than manually threading caches, build a generic memoizer:
 
 ```typescript
 function memoize<T extends (...args: any[]) => any>(fn: T): T {
-  const cache = new Map<string, ReturnType<T>>();
-  
-  return ((...args: Parameters<T>): ReturnType<T> => {
-    const key = JSON.stringify(args);
-    
-    if (cache.has(key)) {
-      return cache.get(key)!;
-    }
-    
-    const result = fn(...args);
-    cache.set(key, result);
-    return result;
-  }) as T;
+    const cache = new Map<string, ReturnType<T>>();
+
+    return ((...args: Parameters<T>): ReturnType<T> => {
+        const key = JSON.stringify(args);
+
+        if (cache.has(key)) {
+            return cache.get(key)!;
+        }
+
+        const result = fn(...args);
+        cache.set(key, result);
+        return result;
+    }) as T;
 }
 
 // Usage
 const stepCount = memoize((n: number, steps: number[] = [1, 3, 5]): number => {
-  if (n < 0) return 0;
-  if (n === 0) return 1;
-  return steps.reduce((sum, step) => sum + stepCount(n - step, steps), 0);
+    if (n < 0) return 0;
+    if (n === 0) return 1;
+    return steps.reduce((sum, step) => sum + stepCount(n - step, steps), 0);
 });
 ```
 
@@ -97,53 +99,53 @@ For long-running applications, unbounded caches are dangerous. Implement a Least
 
 ```typescript
 class LRUCache<K, V> {
-  private cache = new Map<K, V>();
-  
-  constructor(private maxSize: number) {}
-  
-  get(key: K): V | undefined {
-    if (!this.cache.has(key)) return undefined;
-    
-    // Move to end (most recently used)
-    const value = this.cache.get(key)!;
-    this.cache.delete(key);
-    this.cache.set(key, value);
-    return value;
-  }
-  
-  set(key: K, value: V): void {
-    if (this.cache.has(key)) {
-      this.cache.delete(key);
-    } else if (this.cache.size >= this.maxSize) {
-      // Evict oldest (first) entry
-      const firstKey = this.cache.keys().next().value;
-      this.cache.delete(firstKey);
+    private cache = new Map<K, V>();
+
+    constructor(private maxSize: number) {}
+
+    get(key: K): V | undefined {
+        if (!this.cache.has(key)) return undefined;
+
+        // Move to end (most recently used)
+        const value = this.cache.get(key)!;
+        this.cache.delete(key);
+        this.cache.set(key, value);
+        return value;
     }
-    this.cache.set(key, value);
-  }
-  
-  has(key: K): boolean {
-    return this.cache.has(key);
-  }
+
+    set(key: K, value: V): void {
+        if (this.cache.has(key)) {
+            this.cache.delete(key);
+        } else if (this.cache.size >= this.maxSize) {
+            // Evict oldest (first) entry
+            const firstKey = this.cache.keys().next().value;
+            this.cache.delete(firstKey);
+        }
+        this.cache.set(key, value);
+    }
+
+    has(key: K): boolean {
+        return this.cache.has(key);
+    }
 }
 
 function memoizeWithLRU<T extends (...args: any[]) => any>(
-  fn: T, 
-  maxSize: number = 1000
+    fn: T,
+    maxSize: number = 1000
 ): T {
-  const cache = new LRUCache<string, ReturnType<T>>(maxSize);
-  
-  return ((...args: Parameters<T>): ReturnType<T> => {
-    const key = JSON.stringify(args);
-    
-    if (cache.has(key)) {
-      return cache.get(key)!;
-    }
-    
-    const result = fn(...args);
-    cache.set(key, result);
-    return result;
-  }) as T;
+    const cache = new LRUCache<string, ReturnType<T>>(maxSize);
+
+    return ((...args: Parameters<T>): ReturnType<T> => {
+        const key = JSON.stringify(args);
+
+        if (cache.has(key)) {
+            return cache.get(key)!;
+        }
+
+        const result = fn(...args);
+        cache.set(key, result);
+        return result;
+    }) as T;
 }
 ```
 
@@ -163,10 +165,10 @@ Think of counting items in a box. You write "8" on a sticky note. When you add o
 
 **Common applications:**
 
-- **Dynamic programming**: Fibonacci, coin change, edit distance, longest common subsequence
-- **Graph algorithms**: path counting, shortest paths with repeated states
-- **Game engines**: transposition tables in chess cache board evaluations to skip re-analyzing identical positions
-- **API responses**: cache expensive computations or external calls
+-   **Dynamic programming**: Fibonacci, coin change, edit distance, longest common subsequence
+-   **Graph algorithms**: path counting, shortest paths with repeated states
+-   **Game engines**: transposition tables in chess cache board evaluations to skip re-analyzing identical positions
+-   **API responses**: cache expensive computations or external calls
 
 ## The Bottom-Up Alternative
 
@@ -174,32 +176,32 @@ Sometimes you can flip the script—compute iteratively from base cases up:
 
 ```typescript
 function stepCountDP(n: number, steps: number[] = [1, 3, 5]): number {
-  const dp: number[] = new Array(n + 1).fill(0);
-  dp[0] = 1;
-  
-  for (let i = 1; i <= n; i++) {
-    for (const step of steps) {
-      if (i - step >= 0) {
-        dp[i] += dp[i - step];
-      }
+    const dp: number[] = new Array(n + 1).fill(0);
+    dp[0] = 1;
+
+    for (let i = 1; i <= n; i++) {
+        for (const step of steps) {
+            if (i - step >= 0) {
+                dp[i] += dp[i - step];
+            }
+        }
     }
-  }
-  
-  return dp[n];
+
+    return dp[n];
 }
 ```
 
-- **Time**: $O(n \cdot |\text{steps}|)$
-- **Space**: $O(n)$
-- **No recursion**: avoids stack overflow for large $n$
+-   **Time**: $O(n \cdot |\text{steps}|)$
+-   **Space**: $O(n)$
+-   **No recursion**: avoids stack overflow for large $n$
 
 ## Choosing Your Approach
 
-| Approach | Best For |
-|----------|----------|
-| **Memoization** | Natural recursive problems, lazy evaluation, when not all subproblems are needed |
-| **Bottom-up DP** | Clear state space, tight memory control, avoiding recursion limits |
-| **LRU caching** | Long-running services, memory-constrained environments |
+| Approach         | Best For                                                                         |
+| ---------------- | -------------------------------------------------------------------------------- |
+| **Memoization**  | Natural recursive problems, lazy evaluation, when not all subproblems are needed |
+| **Bottom-up DP** | Clear state space, tight memory control, avoiding recursion limits               |
+| **LRU caching**  | Long-running services, memory-constrained environments                           |
 
 ## Practical Gotchas
 
