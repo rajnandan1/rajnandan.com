@@ -19,3 +19,7 @@ Thumbs.db
 # Temp files
 *.tmp
 *.bak
+
+# Downloaded binaries
+zola
+*.tar.gz

@@ -13,6 +13,22 @@ Here are few of my personal projects that I am working on. Some of them are at [
 
 ---
 
+### [Atticus](https://github.com/rajnandan1/atticus)
+
+Atticus is a framework-agnostic voice agent library for voice-controlled UI interactions, powered by OpenAI's Realtime API. It enables developers to build voice-enabled interfaces with UI awareness, allowing users to control applications through natural voice commands.
+
+![GitHub Repo stars](https://img.shields.io/github/stars/rajnandan1/atticus?style=flat-square) ![NPM Downloads](https://img.shields.io/npm/dm/@rajnandan1/atticus?label=NPM%20Downloads&color=blue&style=flat-square)
+
+---
+
+### [Ellipsis](https://github.com/rajnandan1/ellipsis)
+
+Ellipsis is a TypeScript library for DOM to Snapshot conversion that compresses HTML documents for efficient processing by LLMs. Based on research from "Beyond Pixels: Exploring DOM Downsampling for LLM-Based Web Agents", it provides intelligent compression while preserving semantic structure.
+
+![GitHub Repo stars](https://img.shields.io/github/stars/rajnandan1/ellipsis?style=flat-square) ![NPM Downloads](https://img.shields.io/npm/dm/@rajnandan1/ellipsis?label=NPM%20Downloads&color=blue&style=flat-square)
+
+---
+
 ### [PaperPin](https://paperpin.ai)
 
 PaperPin is an AI-powered survey platform that uses synthetic respondents to deliver research insights in minutes. Run concept tests, NPS surveys, UX studies, pricing research, and more—without recruiting human panels. It achieves 95% correlation with traditional human panel surveys.
