@@ -51,7 +51,7 @@ Let's build a real-world example analyzing e-commerce user behavior to generate 
 
 ```python
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, count, desc, collect_list, explode, lit, rank
+from pyspark.sql.functions import col, count, desc, collect_list, explode, lit, rank, sum, avg, when, countDistinct
 from pyspark.sql.window import Window
 from pyspark.ml.fpm import FPGrowth
 from datetime import datetime
@@ -219,11 +219,14 @@ import org.apache.flink.api.common.state.*;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.configuration.Configuration;
+import org.apache.flink.streaming.api.CheckpointingMode;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.KeyedProcessFunction;
+import org.apache.flink.streaming.api.functions.windowing.ProcessWindowFunction;
 import org.apache.flink.streaming.api.windowing.assigners.TumblingEventTimeWindows;
 import org.apache.flink.streaming.api.windowing.time.Time;
+import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer;
 import org.apache.flink.util.Collector;
