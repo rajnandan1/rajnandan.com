@@ -1,6 +1,6 @@
 +++
 title = "Rogue AI Agents and How Observability Builds Trust"
-description = "AI agents reason, plan, and act autonomously. That's powerful—and risky. Here's how observability helps you debug, audit, and trust autonomous systems in production."
+description = "AI agents reason, plan, and act autonomously. That's powerful - and risky. Here's how observability helps you debug, audit, and trust autonomous systems in production."
 date = 2025-11-29
 
 [taxonomies]
@@ -27,16 +27,16 @@ Trace the path from input to output through every intermediate step. This includ
 
 Watch how the agent behaves, not just whether it runs. Look for loops, anomalies, and risky patterns:
 
--   Infinite or long planning loops
--   Repeated tool calls with no progress
--   Outputs outside policy (e.g., PII disclosure, off-policy actions)
--   Sudden drift in confidence or retrieval quality
+- Infinite or long planning loops
+- Repeated tool calls with no progress
+- Outputs outside policy (e.g., PII disclosure, off-policy actions)
+- Sudden drift in confidence or retrieval quality
 
 ### 3. Outcome Alignment
 
 Start with intent. Did the agent deliver the outcome you asked for, given the input and context? Measure the result against ground truth, policy, and business goals.
 
-If the intent was "reset password without exposing PII," you check exactly that—not a vague "agent said success."
+If the intent was "reset password without exposing PII," you check exactly that - not a vague "agent said success."
 
 ## What You Capture
 
@@ -44,23 +44,23 @@ Good observability starts with the right data:
 
 **Inputs and context:**
 
--   User request
--   System instructions
--   Retrieved documents
--   Prior state
+- User request
+- System instructions
+- Retrieved documents
+- Prior state
 
 **Decisions and reasoning:**
 
--   Plans and thought steps
--   Selected tools and parameters passed
--   Results returned
--   If you gate "reasoning" for privacy, still log a machine-readable trail of actions and justifications
+- Plans and thought steps
+- Selected tools and parameters passed
+- Results returned
+- If you gate "reasoning" for privacy, still log a machine-readable trail of actions and justifications
 
 **Outcomes:**
 
--   Final answer
--   Side effects (tickets created, refunds issued)
--   Validations (policy checks, human approvals, metrics)
+- Final answer
+- Side effects (tickets created, refunds issued)
+- Validations (policy checks, human approvals, metrics)
 
 Store this as structured events. Each event has a timestamp, actor (agent/tool), action, inputs, outputs, and status. Stitch events into a timeline. That timeline is your replay: a transparent trail you can analyze, compare across runs, and improve.
 
@@ -68,12 +68,12 @@ Store this as structured events. Each event has a timestamp, actor (agent/tool),
 
 Monitoring tracks raw signals: CPU load, token count, error rate. Useful, but blind.
 
-Observability adds context: the full decision trail. You don't just know something failed—you see where, how, and what it did before failing.
+Observability adds context: the full decision trail. You don't just know something failed - you see where, how, and what it did before failing.
 
 That's the difference between:
 
--   _"We saw 500s"_
--   _"On step 4, the agent misread the policy doc and chose the refund tool incorrectly"_
+- _"We saw 500s"_
+- _"On step 4, the agent misread the policy doc and chose the refund tool incorrectly"_
 
 ## A Practical Example
 
@@ -93,9 +93,9 @@ That's the difference between:
 
 **Observability in action:**
 
--   **Decision tracing:** Every step logged; you can replay the run
--   **Behavioral monitoring:** Flagged a loop when logistics API timed out thrice
--   **Outcome alignment:** Compared final action with policy; if policy prohibits returns after 30 days and the agent approved one on day 45, it triggers review
+- **Decision tracing:** Every step logged; you can replay the run
+- **Behavioral monitoring:** Flagged a loop when logistics API timed out thrice
+- **Outcome alignment:** Compared final action with policy; if policy prohibits returns after 30 days and the agent approved one on day 45, it triggers review
 
 This helps you move faster: incident response, policy audits, and continuous tuning. You stop guessing. You start improving.
 
@@ -126,20 +126,20 @@ This helps you move faster: incident response, policy audits, and continuous tun
 
 Trust isn't a slogan. It's repeatable behavior under scrutiny.
 
--   You can **explain** how the agent decided
--   You can **prove** outcomes match intent and policy
--   You can **detect and correct** anomalies quickly
--   You can **improve** the agent based on evidence, not hunches
+- You can **explain** how the agent decided
+- You can **prove** outcomes match intent and policy
+- You can **detect and correct** anomalies quickly
+- You can **improve** the agent based on evidence, not hunches
 
 ## Quick Start Checklist
 
--   [ ] Define intent for each agent task: inputs, allowed tools, acceptable outcomes
--   [ ] Log every step with timestamps, inputs, outputs, and status
--   [ ] Add validators: policy checks, PII filters, safety rules
--   [ ] Build a timeline view and a replay tool
--   [ ] Track behavior metrics: loops, retries, off-policy decisions
--   [ ] Run postmortems with the trace when incidents occur
--   [ ] Feed learnings back: update prompts, tools, and policies
+- [ ] Define intent for each agent task: inputs, allowed tools, acceptable outcomes
+- [ ] Log every step with timestamps, inputs, outputs, and status
+- [ ] Add validators: policy checks, PII filters, safety rules
+- [ ] Build a timeline view and a replay tool
+- [ ] Track behavior metrics: loops, retries, off-policy decisions
+- [ ] Run postmortems with the trace when incidents occur
+- [ ] Feed learnings back: update prompts, tools, and policies
 
 ## The Takeaway
 

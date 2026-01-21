@@ -12,7 +12,7 @@ toc = true
 comment = true
 +++
 
-As of January 2026, the hypothetical concept of "Agentic Commerce"—software agents autonomously executing financial transactions—has transitioned from research papers to production infrastructure. The announcements at NRF (National Retail Federation) 2026 have solidified the battle lines for the next decade of digital retail.
+As of January 2026, the hypothetical concept of "Agentic Commerce" - software agents autonomously executing financial transactions - has transitioned from research papers to production infrastructure. The announcements at NRF (National Retail Federation) 2026 have solidified the battle lines for the next decade of digital retail.
 
 This post analyzes the current state of the ecosystem, focusing on the emerging "Protocol Wars" between major tech incumbents, and synthesizes strategic insights from recent consultancy reports.
 
@@ -47,7 +47,7 @@ Announced at NRF 2026, the **Universal Commerce Protocol (UCP)** is a counter-mo
 While Stripe and Google battle for the high-value retail cart, a third faction led by Cloudflare, Coinbase, and the open-source community is reviving the long-dormant **HTTP 402 "Payment Required"** status code.
 
 - **The "x402" Standard:** This is the protocol for the _agent economy_ itself. It allows an API or web resource to block an agent with a `402` error, which includes a header requesting a micropayment (often 0.1¢ to 5¢).
-- **Usage:** Unlike ACP/UCP which sell _goods_ (shoes, tickets), x402 sells _access_ and _compute_. It is becoming the standard for agent-to-agent services—paying for clean data, premium inference, or specialized API lookups.
+- **Usage:** Unlike ACP/UCP which sell _goods_ (shoes, tickets), x402 sells _access_ and _compute_. It is becoming the standard for agent-to-agent services - paying for clean data, premium inference, or specialized API lookups.
 - **The Split:** We are seeing a divergence: ACP/UCP for _Consumer Commerce_ (Macro-payments >$5) and x402 for _Machine Commerce_ (Micro-payments <$0.10).
 
 ## Strategic Insights: The "Zero Billion Dollar" Market
@@ -107,4 +107,4 @@ What happens to the mobile app in an agentic world?
 
 2026 is the year of infrastructure. We have moved beyond the "demo" phase where an agent haphazardly navigates a web browser using vision. We now have dedicated pipes (ACP/UCP) for machine-to-machine commerce.
 
-For brands, the message is clear: You can no longer just optimize for SEO (Human Search). You must now optimize for **AEO (Agent Environment Optimization)**. If your catalog isn't readable by UCP or ACP, you are effectively invisible to the wealthiest consumers of the next decade—the AI agents.
+For brands, the message is clear: You can no longer just optimize for SEO (Human Search). You must now optimize for **AEO (Agent Environment Optimization)**. If your catalog isn't readable by UCP or ACP, you are effectively invisible to the wealthiest consumers of the next decade - the AI agents.

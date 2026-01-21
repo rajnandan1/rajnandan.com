@@ -8,7 +8,7 @@ tags = ["typescript", "algorithms", "performance", "optimization"]
 
 ## The Core Insight
 
-Memoization is elegantly simple: cache a function's results by its inputs. When the same input appears again, return the cached value instead of recomputing. You're trading memory for speed—replacing repeated work with instant lookups.
+Memoization is elegantly simple: cache a function's results by its inputs. When the same input appears again, return the cached value instead of recomputing. You're trading memory for speed - replacing repeated work with instant lookups.
 
 ## The Problem: Counting Paths Up Stairs
 
@@ -22,8 +22,8 @@ f(n) = f(n-1) + f(n-3) + f(n-5)
 
 With base cases:
 
--   `f(0) = 1` — one valid way: do nothing
--   `f(n) = 0` when `n < 0` — invalid path
+- `f(0) = 1` — one valid way: do nothing
+- `f(n) = 0` when `n < 0` — invalid path
 
 ## Naive Recursion: Clean but Catastrophically Slow
 
@@ -133,7 +133,7 @@ class LRUCache<K, V> {
 
 function memoizeWithLRU<T extends (...args: any[]) => any>(
     fn: T,
-    maxSize: number = 1000
+    maxSize: number = 1000,
 ): T {
     const cache = new LRUCache<string, ReturnType<T>>(maxSize);
 
@@ -167,10 +167,10 @@ It's like saving a phone number in your contacts. The first time someone gives y
 
 **Common applications:**
 
--   **Dynamic programming**: Fibonacci, coin change, edit distance, longest common subsequence
--   **Graph algorithms**: path counting, shortest paths with repeated states
--   **Game engines**: transposition tables in chess cache board evaluations to skip re-analyzing identical positions
--   **API responses**: cache expensive computations or external calls
+- **Dynamic programming**: Fibonacci, coin change, edit distance, longest common subsequence
+- **Graph algorithms**: path counting, shortest paths with repeated states
+- **Game engines**: transposition tables in chess cache board evaluations to skip re-analyzing identical positions
+- **API responses**: cache expensive computations or external calls
 
 ## The Bottom-Up Alternative
 
@@ -193,9 +193,9 @@ function stepCountDP(n: number, steps: number[] = [1, 3, 5]): number {
 }
 ```
 
--   **Time**: O(n × number of steps)
--   **Space**: O(n)
--   **No recursion**: avoids stack overflow for large `n`
+- **Time**: O(n × number of steps)
+- **Space**: O(n)
+- **No recursion**: avoids stack overflow for large `n`
 
 ## Choosing Your Approach
 
