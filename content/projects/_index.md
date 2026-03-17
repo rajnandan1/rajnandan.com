@@ -31,7 +31,7 @@ Ellipsis is a TypeScript library for DOM to Snapshot conversion that compresses 
 
 ### [Such Skills](https://such-skills.rajnandna.com)
 
-Such Skills is a project focused on skills and is open source on GitHub.
+Such Skills is a collection of Claude Code plugins for image manipulation, Svelte development, and more.
 
 ![GitHub Repo stars](https://img.shields.io/github/stars/rajnandan1/such-skills?style=flat-square)
 
