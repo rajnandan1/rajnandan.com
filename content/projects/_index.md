@@ -29,6 +29,14 @@ Ellipsis is a TypeScript library for DOM to Snapshot conversion that compresses 
 
 ---
 
+### [Such Skills](https://such-skills.rajnandna.com)
+
+Such Skills is a collection of Claude Code plugins for image manipulation, Svelte development, and more.
+
+![GitHub Repo stars](https://img.shields.io/github/stars/rajnandan1/such-skills?style=flat-square)
+
+---
+
 ### [PaperPin](https://paperpin.ai)
 
 PaperPin is an AI-powered survey platform that uses synthetic respondents to deliver research insights in minutes. Run concept tests, NPS surveys, UX studies, pricing research, and more—without recruiting human panels. It achieves 95% correlation with traditional human panel surveys.
