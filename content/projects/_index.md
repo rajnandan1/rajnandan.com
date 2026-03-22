@@ -37,6 +37,14 @@ Such Skills is a collection of Claude Code plugins for image manipulation, Svelt
 
 ---
 
+### [Saki](https://saki.rajnandan.com)
+
+Saki is a self-hosted reverse proxy for analytics and tracking scripts that routes requests through your own domain to avoid ad blockers. Source code is available on [GitHub](https://github.com/rajnandan1/saki).
+
+![GitHub Repo stars](https://img.shields.io/github/stars/rajnandan1/saki?style=flat-square)
+
+---
+
 ### [PaperPin](https://paperpin.ai)
 
 PaperPin is an AI-powered survey platform that uses synthetic respondents to deliver research insights in minutes. Run concept tests, NPS surveys, UX studies, pricing research, and more—without recruiting human panels. It achieves 95% correlation with traditional human panel surveys.
