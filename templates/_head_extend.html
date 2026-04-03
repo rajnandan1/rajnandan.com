@@ -1,3 +1,53 @@
+{% set social_title = config.title %}
+{% set social_description = config.description %}
+{% set social_url = config.base_url %}
+{% set social_type = "website" %}
+{% set social_image = "" %}
+{% set social_image_alt = config.title %}
+
+{% if page is defined %}
+    {% set social_title = page.title %}
+    {% if page.description %}
+        {% set social_description = page.description %}
+    {% endif %}
+    {% if page.permalink %}
+        {% set social_url = page.permalink %}
+    {% endif %}
+    {% if page.extra.social_image is defined %}
+        {% set social_image_path = page.extra.social_image | replace(from="static/", to="") %}
+        {% set social_image = get_url(path=social_image_path) %}
+        {% if page.extra.social_image_alt is defined %}
+            {% set social_image_alt = page.extra.social_image_alt %}
+        {% else %}
+            {% set social_image_alt = page.title %}
+        {% endif %}
+    {% endif %}
+    {% set social_type = "article" %}
+{% elif section is defined %}
+    {% set social_title = section.title %}
+    {% if section.description %}
+        {% set social_description = section.description %}
+    {% endif %}
+    {% if section.permalink %}
+        {% set social_url = section.permalink %}
+    {% endif %}
+{% endif %}
+
+<meta property="og:site_name" content="{{ config.title }}" />
+<meta property="og:title" content="{{ social_title }}" />
+<meta property="og:description" content="{{ social_description }}" />
+<meta property="og:type" content="{{ social_type }}" />
+<meta property="og:url" content="{{ social_url | safe }}" />
+<meta name="twitter:card" content="{% if social_image != "" %}summary_large_image{% else %}summary{% endif %}" />
+<meta name="twitter:title" content="{{ social_title }}" />
+<meta name="twitter:description" content="{{ social_description }}" />
+{% if social_image != "" %}
+<meta property="og:image" content="{{ social_image | safe }}" />
+<meta property="og:image:alt" content="{{ social_image_alt }}" />
+<meta name="twitter:image" content="{{ social_image | safe }}" />
+<meta name="twitter:image:alt" content="{{ social_image_alt }}" />
+{% endif %}
+
 <script
     async
     src="https://saki-production.up.railway.app/g-t-m/script.js?id=G-XY8P7ZVPV5"
