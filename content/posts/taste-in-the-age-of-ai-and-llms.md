@@ -1,5 +1,5 @@
 +++
-title = "Taste in the Age of AI and LLMs"
+title = "Good Taste the Only Real Moat Left"
 description = "AI makes competent output cheap. That makes taste more valuable, but also more incomplete. The real edge comes from pairing judgment with context, stakes, and the willingness to build."
 date = 2026-04-03
 updated = 2026-04-03
