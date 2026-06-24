@@ -1,6 +1,6 @@
 +++
 title = "Good Taste the Only Real Moat Left"
-description = "AI makes competent output cheap. That makes taste more valuable, but also more incomplete. The real edge comes from pairing judgment with context, stakes, and the willingness to build."
+description = "AI made competent output cheap. That raises the value of taste and exposes its limits. The real edge is judgment paired with context, stakes, and the will to build."
 date = 2026-04-03
 updated = 2026-04-03
 
@@ -11,224 +11,176 @@ tags = ["ai", "analysis", "engineering", "strategy"]
 toc = true
 comment = false
 social_image = "static/ogs/taste-in-the-age-of-ai-and-llms/og-image.jpg"
-social_image_alt = "Abstract cover art with the text Good Taste — The Only Real Moat Left."
+social_image_alt = "Abstract cover art with the text Good Taste, The Only Real Moat Left."
 +++
 
-AI and LLMs have changed one thing very quickly: competent output is now cheap.
+AI made competent output cheap. You can generate a landing page in minutes, draft a product memo from one prompt, and polish a pitch deck before anyone has decided what the company actually believes.
 
-A landing page can be generated in minutes. A product memo can appear in a single prompt. A pitch deck can look polished before anyone has done the hard work of deciding what the company actually believes.
+So taste became a topic in tech. When anyone can ship something that looks decent, the people who stand out are the ones who can tell what is generic, what is true, and what is worth pushing further.
 
-That is why taste has become a serious topic in tech. When everyone can produce something that looks decent, the advantage shifts to judgment. The people who stand out are no longer just the ones who can produce. They are the ones who can tell what is generic, what is true, and what is worth pushing further.
-
-But there is a second point that matters just as much: taste is not the final answer. If humans reduce themselves to selecting from AI outputs, they risk becoming reviewers of a machine-led process instead of builders with real stakes in the outcome.
-
-The real opportunity in the age of AI and LLMs is not to become a better selector. It is to combine taste with context, constraints, and the willingness to build something that could not have emerged from the average alone.
+There is a catch. If you reduce yourself to picking the best of what a model produces, you become a reviewer of a machine's work instead of a builder with something at stake. Taste matters more than ever, and taste alone will leave you exposed. The edge is taste plus context, constraints, and the nerve to build something the average could never have produced.
 
 ## What taste actually means
 
-In this context, taste is not about luxury, status, or personal aesthetic branding. It is about distinction under uncertainty.
+Taste here has nothing to do with luxury or status. It is judgment under uncertainty.
 
-Most meaningful work does not come with perfect data. You do not get a spreadsheet that tells you which sentence will make a customer care, which feature is worth a month of engineering time, or which design crosses the line from polished to forgettable. You still have to decide.
+Most work that matters comes without clean data. No spreadsheet tells you which sentence will make a customer care, which feature earns a month of engineering, or which design slips from polished to forgettable. You decide anyway.
 
 Taste shows up in three places:
 
 - What you notice
 - What you reject
-- How precisely you can explain what feels wrong
+- How well you can say what is wrong
 
-That last part matters more than it first appears. Many people can say, "this feels off." Far fewer can say, "this fails because it sounds like every other SaaS product," or "this explanation collapses a regulatory constraint into marketing language and will confuse the customer."
-
-Taste becomes useful when it moves from vibe to diagnosis.
+The third one carries the weight. Plenty of people can say "this feels off." Few can say "this fails because it reads like every other SaaS homepage," or "this buries a regulatory limit under marketing language and will confuse the customer." Taste earns its keep when it turns from a vibe into a diagnosis you can act on.
 
 ## Why AI and LLMs flatten the middle
 
-LLMs are extraordinary pattern-compression engines. They absorb huge volumes of language, design patterns, and interfaces, then recombine them at speed. That is their strength. It is also their default bias.
+An LLM compresses patterns. It absorbs enormous amounts of language, design, and interface, then recombines it fast. That speed is the strength and the bias in one.
 
-By design, these systems are much better at producing statistically plausible output than at originating something deeply specific to your exact context. Left alone, they tend toward the safe center of the distribution.
+These models predict plausible output. They are weaker at originating something specific to your situation, so left alone they drift toward the safe center of the distribution.
 
-That is why so much AI-generated work feels familiar:
+That pull toward the center is why so much AI work feels familiar:
 
-- Landing pages with different logos but the same structure
-- Product copy that could describe almost any app
-- Essays with clean headings and little lived judgment
-- Visual design that looks modern, but not memorable
+- Landing pages with different logos and the same skeleton
+- Product copy that could describe any app
+- Essays with tidy headings and no lived judgment
+- Design that looks modern and forgettable
 
-This is not a failure in the catastrophic sense. It is a success at average. The problem is that average used to be hard enough that it still created some separation. Now it is abundant.
-
-The result is a crowded 7 out of 10 world. The middle is full.
+None of this is broken. It is average, produced at scale. Average used to take enough effort to create some separation. Now it is everywhere, and a crowded 7-out-of-10 world is the result.
 
 ## The new bottleneck is judgment
 
-Before AI, mediocre work often reflected a lack of time, resources, or execution skill. Today mediocre work often means something else: the person stopped at the first acceptable draft.
+Before AI, mediocre work usually meant someone ran out of time, money, or skill. Now it usually means someone stopped at the first acceptable draft.
 
-That is the economic shift AI introduces. It compresses the cost of first drafts, which means the value moves downstream.
+AI drives down the cost of that first draft, so the value sits downstream, in what you do after it.
 
-The scarce part is now the ability to say:
+The scarce move is saying:
 
-- This looks fine, but it is too generic
-- This sounds impressive, but it hides the real trade-off
-- This interface is polished, but it does not fit how the user actually thinks
-- This plan is ambitious, but the operating constraints make it unrealistic
+- This looks fine and it is too generic
+- This sounds impressive and it hides the real trade-off
+- This interface is polished and it fights how the user thinks
+- This plan is ambitious and the operating constraints sink it
 
-In other words, the scarce skill is not generation. It is refusal.
+Generation is cheap now. Refusal is what stayed scarce.
 
 ## AI as a mirror for your own taste
 
-One of the most useful things about AI is also one of the most humbling: it reveals how clear your own judgment actually is.
+AI also holds up a mirror. Ask it for ten versions of a homepage hero, an onboarding flow, a support email, or a product pitch, and you tend to get the same spread:
 
-Ask an LLM to produce ten versions of a homepage hero, onboarding flow, support email, or product pitch. You will usually see a pattern:
+- A few weak ones
+- A big cluster of acceptable ones
+- One or two near what you wanted
 
-- A few clearly weak versions
-- A large cluster of acceptable versions
-- One or two that seem closer to what you want
+Skip "which one do I pick?" Ask why most of them are still wrong. How sharply you can answer that is your taste. If the critique stays vague, the taste is still raw. If it gets specific, your judgment now beats the model's output, and you can drive the tool instead of following it.
 
-The interesting question is not, "Which one should I pick?" It is, "Why are most of these still wrong?"
+Here is the division of labor:
 
-Your answer to that question is the quality of your taste.
+| Layer            | AI and LLMs do well                    | Humans still need to do                          |
+| ---------------- | -------------------------------------- | ------------------------------------------------ |
+| Generation       | Produce many plausible variations fast | Decide which direction matters                   |
+| Pattern matching | Recombine common structures and phrasing | Spot what is too generic for this situation    |
+| Optimization     | Improve toward a stated target         | Decide whether the target itself is right        |
+| Scaling          | Turn one idea into many assets         | Carry the real context, stakes, and consequences |
 
-If your critique stays vague, your taste is still underdeveloped. If your critique becomes precise, your judgment is stronger than the model output. You can then use the model well instead of being led by it.
-
-A practical way to think about it is this:
-
-| Layer            | AI and LLMs do well                       | Humans still need to do                          |
-| ---------------- | ----------------------------------------- | ------------------------------------------------ |
-| Generation       | Produce many plausible variations quickly | Decide which direction matters                   |
-| Pattern matching | Recombine common structures and phrasing  | Spot what is too generic for this situation      |
-| Optimization     | Improve toward a stated target            | Decide whether the target itself is right        |
-| Scaling          | Turn one idea into many assets            | Carry the real context, stakes, and consequences |
-
-The system can generate options. It cannot supply ownership.
+The model hands you options. Ownership stays with you.
 
 ## A practical loop for training taste
 
-Taste improves through repeated exposure, critique, and shipping. AI can accelerate that loop if you use it correctly.
+Taste grows through exposure, critique, and shipping. AI can speed that loop up.
 
-A simple method looks like this:
+The method:
 
-1. Pick one high-leverage artifact from your week. A paragraph, a pricing explanation, a dashboard label, a customer email, or a key slide.
-2. Generate 10 to 20 versions with an AI model.
-3. For each version, write one sentence that starts with "fails because..."
-4. Rewrite the strongest version with a hard constraint such as:
+1. Pick one high-leverage artifact from your week: a paragraph, a pricing explanation, a dashboard label, a customer email, a slide.
+2. Generate 10 to 20 versions.
+3. For each, write one sentence starting with "fails because..."
+4. Rewrite the best version under a hard constraint:
     - No buzzwords
     - One idea per sentence
-    - Must acknowledge a real trade-off
+    - Must name a real trade-off
     - Must make sense to a first-time user
-5. Ship the final version somewhere real and observe what happens.
+5. Ship it somewhere real and watch what happens.
 
-The goal is not to let AI choose for you. The goal is to build a sharper rejection vocabulary.
-
-Over time, this changes how you work. You stop admiring polish for its own sake. You get faster at spotting empty specificity, borrowed tone, and fake confidence.
+You are not training AI to choose for you. You are building a sharper vocabulary for saying no. Do it enough and your defaults change: you stop admiring polish, and you spot empty specificity, borrowed tone, and fake confidence faster.
 
 ## Why taste alone is not enough
 
-This is where the conversation gets more interesting.
+The "taste matters" argument has a strong version that boxes you into a small role: the model generates, and you stand at the end of the line picking the best one. Useful, and too small.
 
-There is a strong version of the "taste matters" argument that quietly pushes humans into a narrow role. In that version, AI generates many outputs and the human stands at the end of the pipeline selecting the best one.
+Most important work never came from picking. It came from making something under constraint, arguing with reality, collaborators, budgets, deadlines, and the cost of getting it wrong. That friction is where depth comes from.
 
-That is a useful role, but it is also too small.
-
-Historically, important work did not emerge from detached selection alone. It emerged from co-creation under constraint. Builders argued with reality, with collaborators, with budgets, with materials, with timelines, and with the consequences of getting things wrong.
-
-That friction matters. It is where depth comes from.
-
-Once you see that, the risk becomes clearer: if human value is reduced to curation, the human becomes a discriminator in a mostly machine-driven loop.
-
-The analogy to machine learning is imperfect but useful. In generative adversarial setups, the discriminator exists to help the generator improve. Once the generator is good enough, the discriminator is not the part that ships.
-
-The warning is not that taste has no value. It does. The warning is that taste without authorship, stake, or construction can become a narrow and eventually fragile role.
+Reduce your job to curation and you become a discriminator in a machine's loop. The GAN analogy is rough but it lands: the discriminator exists to make the generator better, and once the generator is good enough, the discriminator is not what ships. Taste has real value. Taste with no authorship, no stake, and nothing built is a narrow role, and a fragile one.
 
 ## What humans still do that models cannot own
 
-AI can generate. It can recombine. It can optimize against prompts. What it cannot own in the human sense are the parts of work that carry real consequence.
+A model generates, recombines, and optimizes against a prompt. What it can't own is the part of the work that carries consequence.
 
-Three examples matter:
+Three of those parts:
 
 ### 1. Holding the stake
 
-Real products operate under consequences that do not fit neatly inside a prompt. Trust, regulatory exposure, outage risk, team capacity, customer confusion, brand damage, and on-call pain all live here.
+Real products run under stakes that don't fit in a prompt: trust, regulatory exposure, outage risk, team capacity, brand damage, on-call pain. A model can draft copy for a payments feature. It can't answer for that copy when it hides a regulatory limit and the support queue floods.
 
-A model can suggest copy for a payments feature. It cannot hold responsibility when that copy obscures a regulatory limitation and support tickets spike.
+### 2. Working with the genuinely new
 
-### 2. Working with the truly new
-
-Genuinely new ideas often look wrong at first because they do not resemble the training set. They feel awkward, incomplete, or suspiciously non-standard.
-
-Humans can sit with that discomfort. They can protect something early and fragile long enough for it to become legible.
+New ideas tend to look wrong at first. They don't match the training set, so they read as awkward or off-standard. You can sit with that discomfort and protect something fragile long enough for other people to get it.
 
 ### 3. Choosing direction
 
-The biggest decisions are not formatting decisions. They are directional decisions.
-
-What problem is worth solving? What trade-off is acceptable? What kind of company, product, or writing do you want to be responsible for? What do you refuse to optimize for?
-
-These are not post-processing tasks. They are authorship.
+The biggest calls are directional, not cosmetic. What problem is worth solving? Which trade-off can you live with? What product do you want your name on? What will you refuse to optimize for? That is authorship, and it happens before any prompt.
 
 ## Why this matters for builders
 
-This conversation matters beyond any single market because the temptation is now universal: settle for competent surface area and mistake that for meaningful work.
+This goes past any one market, because the temptation is everywhere: ship competent surface and call it meaningful work.
 
-The tools are widely accessible. Small teams and solo builders can now ship what previously required much larger organizations.
+The tools are open to everyone. A small team or a solo builder can now ship what used to take a whole org. Good news, with a catch.
 
-That is the good news.
+Teams can now produce work that is polished worldwide and hollow up close. A fintech interface can sound sophisticated and never explain timing, settlement, or what support will actually do. A B2B site can look world-class and say nothing a real buyer would recognize as grounded. A devtool can market beautifully and ignore the on-call load, compliance pressure, and cost limits its users live with. AI makes it easy to sound sophisticated and does nothing to make you specific, and specificity is the whole advantage.
 
-The risk is that teams everywhere start using AI to produce products that are globally polished but contextually shallow. A fintech interface can sound sophisticated while still failing to explain timing, settlement behavior, or support expectations clearly. A B2B SaaS site can look world-class while saying almost nothing a real buyer would recognize as grounded. A devtool can have excellent marketing language and still ignore the practical pains of understaffed teams dealing with on-call load, compliance pressure, and cost constraints.
+For builders, taste means moving toward real context:
 
-AI makes it easier to sound sophisticated. It does not make it easier to be specific.
+- Write for how people understand the problem, not how SaaS templates talk about it
+- Pull domain and operating constraints into the product instead of hiding them behind abstraction
+- Design for distracted, low-attention, real conditions, not demo conditions
+- Use AI to map the canon fast, then leave it where the context demands
 
-That specificity is where the advantage is.
-
-For builders, taste should mean moving closer to real context, not farther away from it. That includes:
-
-- Writing for how people actually understand the problem, not how generic SaaS templates talk about it
-- Bringing domain and operating constraints into the product, not hiding them under abstract language
-- Designing for non-ideal, low-attention, real-world environments instead of polished demo conditions
-- Using AI to map the canon quickly, then deliberately departing from it where the context demands
-
-What the market does not need is more competent clones. It needs builders who can use AI speed without surrendering the specifics that make a product trustworthy and useful.
+The market has enough competent clones. It needs builders who keep AI's speed without giving up the specifics that make a product worth trusting.
 
 ## A better way to use AI
 
-If the bad use of AI is passive selection, the better use is active shaping.
+Passive selection is the weak way to use AI. Active shaping is the other one:
 
-That looks like:
+- Explore the design space faster
+- Study the best existing work and learn the canon
+- Generate alternatives you would not have reached on your own
+- Reject what is generic, dishonest, or context-blind
+- Add the constraints the model can't know, then build from there
 
-- Use AI to explore the design space faster
-- Use AI to study the best existing work and understand the canon
-- Use AI to generate alternatives you would not have considered immediately
-- Use your own judgment to reject what is generic, dishonest, or context-blind
-- Add constraints the model does not naturally know, then build from there
+When AI output looks polished and feels hollow, ask:
 
-A useful question to ask whenever AI output feels polished but hollow is:
+**What am I adding that the model could not add on its own?**
 
-**What am I adding here that the model could not have added on its own?**
-
-Good answers include:
+Good answers:
 
 - A real operating constraint
-- A user truth learned the hard way
+- A user truth you learned the hard way
 - A regulatory nuance
 - A cultural detail
 - A strategic trade-off
-- A point of view you are willing to stand behind
+- A view you will defend in public
 
-If you cannot name that addition, you may still be in consumption mode.
+If you can't name the addition, you are still just consuming.
 
 ## Taste as a side-effect of serious work
 
-The most useful conclusion is also the least glamorous. Taste is not a separate identity. It is a side-effect of paying close attention to reality.
+The honest conclusion is unglamorous. Taste is a by-product of paying close attention to reality. It grows when you:
 
-It grows when you:
-
-- Study strong work carefully
-- Generate many options without falling in love with the first one
+- Study strong work
+- Generate many options and refuse to fall for the first
 - Learn to diagnose why something fails
-- Ship into the real world where feedback has consequences
+- Ship where feedback has consequences
 - Stay close to the domain instead of floating above it
 
-AI and LLMs make the first draft cheap. They do not make judgment automatic. They do not remove the need for ownership. They do not replace the work of choosing what should exist in the first place.
+A model makes the first draft cheap. It does not make your judgment automatic, hand you ownership, or choose what deserves to exist. That is why taste matters more now, and why taste on its own still falls short.
 
-That is why taste matters more now.
-
-It is also why taste, by itself, is not enough.
-
-The real edge in the age of AI is not having better vibes than the model. It is using the model to strip away average output faster, then applying human judgment where it matters most: direction, specificity, consequence, and the courage to build something that could not have emerged from the statistical middle alone.
+The edge in this era is not better vibes than the model. You use the model to clear away average output faster, then spend your judgment where it counts: direction, specificity, consequence, and the nerve to build something the statistical middle could never reach.
