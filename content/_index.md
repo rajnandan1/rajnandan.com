@@ -7,7 +7,7 @@ footer = true
 
 name = "Raj Nandan Sharma"
 id = "rajnandan1"
-bio = "Tech enthusiast • Go, Svelte, NodeJS, TypeScript • Director of Engineering"
+bio = "Tech enthusiast • Go, Svelte, NodeJS, TypeScript • Product Engineer @ Crustdata"
 avatar = "img/avatar.jpg"
 
 links = [
@@ -25,14 +25,14 @@ date_format = "%b %-d, %Y"
 
 Hi
 
-I'm Raj Nandan Sharma—a full-stack engineer and engineering director based in Bengaluru, India. I build products end-to-end and enjoy taking ideas from the sketchpad to production. I've been writing code since 2012, mostly in **Go**, **Svelte**, **NodeJS**, and **TypeScript**.
+I'm Raj Nandan Sharma, a full-stack and product engineer based in Bengaluru, India. I build products end-to-end, from sketch to production. I've been writing code since 2012, mostly in **Go**, **Svelte**, **NodeJS**, and **TypeScript**.
 
-My work sits at the intersection of fintech, AI, and developer tooling. At [Cashfree Payments](https://cashfree.com), I lead teams shipping high-scale payment systems. I've built search pipelines, crafted authentication flows, and designed internal platforms that keep businesses running. I like solving blunt, real problems—downtimes, latency, alerts, data modeling, shipping stable builds without drama.
+Today I'm a product engineer at [Crustdata](https://crustdata.co), building data APIs for go-to-market teams and leading product-led growth. Before that I worked on payments at [Cashfree](https://cashfree.com). I like solving blunt, real problems and shipping stable builds without drama.
 
-On the side, I experiment with solo projects: agent-driven back-office tools, vector-based search for large text sources, regulatory-monitoring automation, browser-based terminals, bookmark managers, and status-page integrations. I keep a steady bias toward practical engineering—fewer moving parts, predictable behavior, clean interfaces.
+On the side, I build solo projects: agent-driven back-office tools, vector search over large text, regulatory-monitoring automation, browser-based terminals, bookmark managers, status-page integrations. I aim for fewer moving parts and predictable behavior.
 
-I'm currently exploring solopreneurship and ways to turn engineering projects into usable products. If a system needs to be scraped, monitored, indexed, embedded, automated, or debugged at 2am, I'm usually interested.
+I'm exploring solopreneurship, turning engineering projects into products people use. If a system needs to be scraped, monitored, indexed, embedded, automated, or debugged at 2am, I'm interested.
 
-I also game from time to time. My online alias is **purplewow**—mostly single-player, mostly souls-likes.
+I also game from time to time. My online alias is **purplewow**, mostly single-player, mostly souls-likes.
 
-Technology should make life quieter, not louder. My work reflects that.
+I build things to make life quieter.
