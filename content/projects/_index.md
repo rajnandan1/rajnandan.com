@@ -13,6 +13,16 @@ Here are few of my personal projects that I am working on. Some of them are at [
 
 ---
 
+### [Hop](https://github.com/rajnandan1/hop)
+
+Hop is a serverless URL shortener that runs entirely on GitHub — no server, no database, no secrets. You create short links by opening a GitHub issue; a workflow validates it, writes it to `urls.json`, and GitHub Pages serves the redirect.
+
+It's a **GitHub template repository**, which means you get your own URL shortener in ~2 minutes: generate a repo from the template, enable Actions and Pages, and you're live. No infra to provision, no costs, no maintenance overhead — the template handles everything including custom domain support.
+
+![GitHub Repo stars](https://img.shields.io/github/stars/rajnandan1/hop?style=flat-square)
+
+---
+
 ### [![Tell Me Why](https://tellmewhy.page/logo.svg)](https://tellmewhy.page/)
 
 [Tell Me Why](https://tellmewhy.page/) — Ask why about anything, down to bedrock. A tool for drilling into the first-principles behind any question, recursively unpacking explanations until the root cause is clear.
