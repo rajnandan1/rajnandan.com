@@ -13,6 +13,12 @@ Here are few of my personal projects that I am working on. Some of them are at [
 
 ---
 
+### [![Tell Me Why](https://tellmewhy.page/logo.svg)](https://tellmewhy.page/)
+
+[Tell Me Why](https://tellmewhy.page/) — Ask why about anything, down to bedrock. A tool for drilling into the first-principles behind any question, recursively unpacking explanations until the root cause is clear.
+
+---
+
 ### [Atticus](https://github.com/rajnandan1/atticus)
 
 Atticus is a framework-agnostic voice agent library for voice-controlled UI interactions, powered by OpenAI's Realtime API. It enables developers to build voice-enabled interfaces with UI awareness, allowing users to control applications through natural voice commands.
