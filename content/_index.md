@@ -27,7 +27,7 @@ Hi
 
 I'm Raj Nandan Sharma, a full-stack and product engineer based in Bengaluru, India. I build products end-to-end, from sketch to production. I've been writing code since 2012, mostly in **Go**, **Svelte**, **NodeJS**, and **TypeScript**.
 
-Today I'm a product engineer at [Crustdata](https://crustdata.co), building data APIs for go-to-market teams and leading product-led growth. Before that I worked on payments at [Cashfree](https://cashfree.com). I like solving blunt, real problems and shipping stable builds without drama.
+Today I'm a Staff Software Engineer at [Crustdata](https://crustdata.co), building data APIs for go-to-market teams and leading product-led growth. Before that I worked as a Director of Engineering on Payment Gateway at [Cashfree Payments](https://cashfree.com). I like solving blunt, real problems and shipping stable builds without drama.
 
 On the side, I build solo projects: agent-driven back-office tools, vector search over large text, regulatory-monitoring automation, browser-based terminals, bookmark managers, status-page integrations. I aim for fewer moving parts and predictable behavior.
 
