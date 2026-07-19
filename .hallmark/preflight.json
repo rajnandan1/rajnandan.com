@@ -1,0 +1,13 @@
+{
+  "scanned": "2026-07-18",
+  "framework": "Zola (Serene theme v5.5.0)",
+  "fonts": {
+    "previous": ["Geist", "Newsreader", "IBM Plex Mono"],
+    "current": ["DM Serif Display", "Source Serif 4", "IBM Plex Mono"],
+    "source": "templates/_custom_font.html (Google Fonts)"
+  },
+  "palette": "OKLCH tokens in templates/_custom_css.html (Newsprint system, light + dark)",
+  "motion": "CSS-only; tokens --ease-out/--ease-in, --dur-micro/short/long; no JS animation library",
+  "spacing": "4pt named scale --space-2xs..--space-2xl",
+  "design_system": "design.md at project root (locked, designed-as-app)"
+}

@@ -1,0 +1,13 @@
+[
+  {
+    "date": "2026-07-18",
+    "scope": "app",
+    "macrostructure": "Index-First (home, blog) + Long Document (posts, prose)",
+    "theme": "Newsprint",
+    "theme_axes": "light / roman-serif / warm-oxblood",
+    "nav": "N6 newspaper masthead",
+    "footer": "Ft2 inline rule",
+    "enrichment": "none",
+    "brief": "rajnandan.com · site-wide redesign, ink-and-paper editorial (Zola + Serene)"
+  }
+]
