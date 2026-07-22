@@ -45,6 +45,14 @@ Ellipsis is a TypeScript library for DOM to Snapshot conversion that compresses 
 
 ---
 
+### [json-to-md](https://github.com/rajnandan1/json-to-md)
+
+json-to-md converts JSON documents into deterministic, human-readable GitHub Flavored Markdown with byte-identical output across TypeScript and Go implementations.
+
+![GitHub Repo stars](https://img.shields.io/github/stars/rajnandan1/json-to-md?style=flat-square) ![NPM Downloads](https://img.shields.io/npm/dm/@rajnandan1/json-to-md?label=NPM%20Downloads&color=blue&style=flat-square)
+
+---
+
 ### [Such Skills](https://such-skills.rajnandan.com)
 
 Such Skills is a collection of Claude Code plugins for image manipulation, Svelte development, and more.
