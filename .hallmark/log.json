@@ -1,5 +1,15 @@
 [
   {
+    "date": "2026-08-04",
+    "scope": "page",
+    "macrostructure": "Long Document (demo variant)",
+    "theme": "Newsprint",
+    "nav": "back-link masthead-lite",
+    "footer": "Ft2 inline rule",
+    "enrichment": "none \u2014 interactive canvas chart is the content",
+    "brief": "LTTB interactive demo \u00b7 static/demos/lttb/ \u00b7 linked from the LTTB post"
+  },
+  {
     "date": "2026-07-18",
     "scope": "app",
     "macrostructure": "Index-First (home, blog) + Long Document (posts, prose)",
@@ -8,6 +18,6 @@
     "nav": "N6 newspaper masthead",
     "footer": "Ft2 inline rule",
     "enrichment": "none",
-    "brief": "rajnandan.com · site-wide redesign, ink-and-paper editorial (Zola + Serene)"
+    "brief": "rajnandan.com \u00b7 site-wide redesign, ink-and-paper editorial (Zola + Serene)"
   }
 ]

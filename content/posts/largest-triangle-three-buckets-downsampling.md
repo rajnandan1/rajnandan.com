@@ -10,24 +10,26 @@ toc = true
 
 ## The Core Problem
 
-You have 10 million time-series data points - stock prices, server metrics, IoT sensor readings. Your charting library chokes at 50,000 points. The browser tab freezes. Users complain.
+You have 10 million time-series data points: stock prices, server metrics, IoT sensor readings. Your charting library chokes past 50,000 points, the tab freezes, and users complain.
 
-The naive solution: take every Nth point. The result: jagged lines, missing peaks, lost valleys. Critical anomalies disappear. Your dashboard lies.
+The naive fix, taking every Nth point, produces jagged lines and drops the peaks and valleys where anomalies live.
 
-Largest Triangle Three Buckets (LTTB) solves this. It's a downsampling algorithm that preserves the visual shape of your data by maximizing the area of triangles formed between consecutive points. You get smooth, accurate charts that load instantly.
+Largest Triangle Three Buckets (LTTB) preserves the visual shape of your data by maximizing the area of triangles formed between consecutive points. You get charts that keep their shape and render fast.
+
+There is a [live demo](/demos/lttb/) of everything below: drag the threshold, switch between LTTB and every-Nth sampling, and watch which points survive.
 
 ## What Is LTTB?
 
-LTTB is a downsampling algorithm that reduces N points to M points (where M << N) while maintaining visual accuracy. The name describes exactly how it works:
+LTTB is a downsampling algorithm that reduces N points to M points (where M << N) while maintaining visual accuracy. The name describes how it works:
 
 - **Largest Triangle:** It finds the point that forms the largest triangle area with neighboring points
 - **Three Buckets:** It divides data into buckets and looks at three buckets at a time
 
-Think of it like this: imagine you're drawing a mountain range. Instead of drawing every grain of sand, you pick the peaks, valleys, and slopes that capture the mountain's shape. LTTB does this mathematically.
+Imagine drawing a mountain range: you pick the peaks, valleys, and slopes that capture its shape instead of tracing every grain of sand. LTTB does this mathematically.
 
 ### The Mathematical Insight
 
-The algorithm maximizes the area of triangles formed by consecutive selected points. Large triangle areas mean significant visual change - exactly what human eyes need to perceive the data's shape correctly.
+The algorithm maximizes the area of triangles formed by consecutive selected points. A large triangle area marks a significant visual change, which is what your eye needs to read the data's shape.
 
 For three points forming a triangle, the area formula is:
 
@@ -41,7 +43,7 @@ By selecting points that maximize these areas, we preserve visual features: shar
 
 ### 1. Visual Fidelity Over Statistical Precision
 
-LTTB optimizes for what humans see, not statistical accuracy. When you're rendering a chart, you don't need every data point - you need the shape. LTTB preserves:
+LTTB optimizes for what you see, not statistical accuracy. A rendered chart needs the shape of the data, not each point. LTTB preserves:
 
 - **Peaks and valleys:** Extreme values stay visible
 - **Trend changes:** Slope transitions remain clear
@@ -49,10 +51,10 @@ LTTB optimizes for what humans see, not statistical accuracy. When you're render
 
 ### 2. Predictable Performance
 
-The algorithm is O(n) - it makes exactly one pass through your data. No sorting, no complicated data structures. For 1 million points downsampled to 1,000:
+The algorithm is O(n): one pass through your data, no sorting, no extra data structures. For 1 million points downsampled to 1,000:
 
-- **Time complexity:** O(n) - linear scan
-- **Space complexity:** O(1) extra - processes in place (with output buffer)
+- **Time complexity:** O(n), a linear scan
+- **Space complexity:** O(1) beyond the output buffer
 - **Processing time:** ~10-50ms on modern hardware
 
 ### 3. Deterministic Results
@@ -64,8 +66,6 @@ Unlike sampling with randomness, LTTB always produces the same output for the sa
 - **Caching:** You can cache downsampled results reliably
 
 ## The LTTB Algorithm: Step by Step
-
-Let me break down how it works before we code it.
 
 **Setup:**
 1. You have N source points
@@ -97,7 +97,7 @@ For Bucket 2:
 
 ## TypeScript Implementation
 
-Here's a production-ready implementation:
+A production-ready implementation:
 
 ```typescript
 interface Point {
@@ -223,7 +223,7 @@ console.log(`Reduction: ${((1 - downsampled.length / originalData.length) * 100)
 
 ## Real-World Example: Stock Price Visualization
 
-Let's say you're building a stock charting application. You fetch intraday data - one price per minute for a year:
+Say you're building a stock charting application. You fetch intraday data, one price per minute for a year:
 
 ```typescript
 interface StockPrice {
@@ -279,7 +279,7 @@ const chartData = downsampleStockData(yearData, 2000); // 99.6% reduction
 - IoT sensor data (temperature, pressure, vibration)
 - Analytics dashboards (user activity, sales trends)
 
-**Why it works:** Time-series data is dense and continuous. LTTB preserves the temporal patterns humans need to spot trends and anomalies.
+**Why it works:** Time-series data is dense and continuous. LTTB preserves the temporal patterns you need to spot trends and anomalies.
 
 ### 2. Real-Time Monitoring Dashboards
 
@@ -373,7 +373,7 @@ app.get('/api/metrics/:id', async (req, res) => {
 - Correlation analysis
 - Any statistical computation
 
-**Why:** LTTB optimizes for visual accuracy, not statistical properties. It intentionally biases toward extremes and changes, which skews statistics.
+**Why:** LTTB optimizes for visual accuracy, not statistical properties. It biases toward extremes and changes, which skews statistics.
 
 ```typescript
 // BAD: Statistical analysis on downsampled data
@@ -506,7 +506,7 @@ self.onmessage = (e) => {
 
 ### Loss of Statistical Properties
 
-This is the big one. Downsampled data looks right but calculates wrong:
+The biggest limitation: downsampled data looks right on a chart and gives wrong numbers in calculations.
 
 | Metric | Full Data | LTTB (1000pts) | Error |
 |--------|-----------|----------------|-------|
@@ -643,10 +643,6 @@ Before deploying LTTB in production:
 
 ## Conclusion
 
-LTTB solves a specific problem elegantly: making large time-series datasets renderable without losing visual meaning. It's not a general-purpose data compression algorithm - it's a visualization optimization.
+LTTB is a visualization optimization, not a general-purpose compression algorithm. It trades statistical accuracy for visual fidelity, and when you're rendering charts that trade is worth making. Your users see the same patterns in 1,000 points that exist in 1,000,000, and the browser stays responsive.
 
-The algorithm makes a clear trade: statistical accuracy for visual fidelity. If you're rendering charts, this trade is almost always worth it. Your users see the same patterns in 1,000 points that exist in 1,000,000 - but their browser doesn't crash.
-
-Use it when you're drawing lines on screens. Don't use it when you're doing math. Keep these separate, and LTTB becomes a powerful tool in your performance optimization toolkit.
-
-The implementation is straightforward - about 80 lines of TypeScript. The impact is immediate: charts that were unusable become instant. That's the mark of a good algorithm - simple idea, dramatic results.
+Use it when you draw lines on screens. Keep the full data for math. The whole implementation fits in about 80 lines of TypeScript, and you can see it running in the [live demo](/demos/lttb/).

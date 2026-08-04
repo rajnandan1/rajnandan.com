@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LTTB, live — Largest Triangle Three Buckets demo</title>
+<meta name="description" content="Interactive demo of the Largest Triangle Three Buckets downsampling algorithm. Drag the threshold, switch methods, watch which points survive." />
+<link rel="icon" href="/img/favicon-32x32.png" />
+<script>
+    // Match the blog's theme before first paint (serene stores "dark"/"light" under "theme").
+    (function () {
+        var t = null;
+        try { t = localStorage.getItem("theme"); } catch (e) {}
+        if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        if (t === "dark") document.documentElement.classList.add("dark");
+    })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+/>
+<style>
+    /* Hallmark · macrostructure: Long Document (demo variant) · genre: editorial · theme: Newsprint (design.md-managed)
+     * nav: back-link masthead-lite · footer: Ft2 inline rule · enrichment: none — the chart IS the content
+     * chart palette validated (dataviz six checks): light #932b2a/#00579a on #f8f6f3 · dark #cb6d64/#4e90d2 on #120f0b */
+    /* Hallmark · pre-emit critique: P5 H4 E4 S4 R5 V4
+     * contrast: pass (40–41) · slop: pass (42–45) · honest: pass (46) · chrome: pass (47)
+     * tokens: pass (48) · responsive: pass (49) · icons: pass (30) · mobile: pass (34, 49, 50–57) */
+
+    :root {
+        --color-paper: oklch(97.5% 0.005 80);
+        --color-paper-2: oklch(94.6% 0.007 80);
+        --color-paper-raised: oklch(98.8% 0.005 80);
+        --color-ink: oklch(21% 0.012 60);
+        --color-ink-2: oklch(44% 0.014 70);
+        --color-rule: oklch(85.5% 0.009 80);
+        --color-rule-strong: oklch(38% 0.012 70);
+        --color-accent: oklch(45% 0.14 25);
+        --color-focus: oklch(50% 0.15 25);
+
+        /* chart series — hex so canvas can read them; oklch equivalents in the stamp above */
+        --chart-context: #9d9790;  /* original signal · oklch(68% 0.012 75) */
+        --chart-lttb: #932b2a;     /* LTTB · the site oxblood · oklch(45% 0.14 25) */
+        --chart-nth: #00579a;      /* every-Nth · oklch(45% 0.13 250) */
+        --chart-label: #58514a;    /* axis tick text · oklch(44% 0.014 70) — 4.5:1+ on chart paper */
+        --chart-grid: #e5e1da;
+        --chart-paper: #f8f6f3;
+
+        --font-display: "DM Serif Display", ui-serif, Georgia, serif;
+        --font-body: "Source Serif 4", ui-serif, Georgia, serif;
+        --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+
+        --text-xs: 0.72rem;
+        --text-sm: 0.8rem;
+        --text-md: 1.2rem;
+
+        --space-2xs: 0.25rem;
+        --space-xs: 0.5rem;
+        --space-sm: 0.75rem;
+        --space-md: 1rem;
+        --space-lg: 1.5rem;
+        --space-xl: 2.5rem;
+        --space-2xl: 4rem;
+
+        --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+        --dur-micro: 120ms;
+        --dur-short: 220ms;
+        --dur-long: 420ms;
+        --rule-hair: 1px;
+        --radius-img: 6px;
+        --main-max-width: 700px;
+    }
+
+    .dark {
+        --color-paper: oklch(17% 0.01 70);
+        --color-paper-2: oklch(21% 0.012 72);
+        --color-paper-raised: oklch(23% 0.012 72);
+        --color-ink: oklch(92% 0.008 80);
+        --color-ink-2: oklch(71% 0.012 78);
+        --color-rule: oklch(33% 0.012 75);
+        --color-rule-strong: oklch(76% 0.01 78);
+        --color-accent: oklch(64% 0.12 27);
+        --color-focus: oklch(68% 0.13 27);
+
+        --chart-context: #625d56;  /* oklch(48% 0.012 75) */
+        --chart-lttb: #cb6d64;     /* oklch(64% 0.12 27) */
+        --chart-nth: #4e90d2;      /* oklch(64% 0.12 250) */
+        --chart-label: #a6a199;    /* oklch(71% 0.012 78) */
+        --chart-grid: #2b2622;
+        --chart-paper: #120f0b;
+    }
+
+    * { box-sizing: border-box; margin: 0; }
+    html, body { overflow-x: clip; }
+    html { color-scheme: light dark; }
+    body {
+        background: var(--color-paper);
+        color: var(--color-ink);
+        font-family: var(--font-body);
+        font-size: 18px;
+        line-height: 1.72;
+        transition: background var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out);
+    }
+
+    main {
+        max-width: var(--main-max-width);
+        margin: 0 auto;
+        padding: var(--space-xl) var(--space-md) var(--space-lg);
+    }
+
+    a { color: var(--color-ink); text-decoration: underline; text-decoration-color: var(--color-accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+    a:hover { color: var(--color-accent); text-decoration-thickness: 2px; }
+    :focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
+
+    .backlink { font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; color: var(--color-ink-2); }
+    .backlink:hover { color: var(--color-accent); text-decoration: underline; text-decoration-color: var(--color-accent); }
+
+    header.masthead { margin-top: var(--space-lg); border-bottom: 3px double var(--color-rule-strong); padding-bottom: var(--space-md); }
+    h1 { font-family: var(--font-display); font-weight: 400; font-style: normal; font-size: clamp(1.9rem, 5.4vw, 2.9rem); line-height: 1.12; overflow-wrap: anywhere; min-width: 0; }
+    .dateline { font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-ink-2); margin-top: var(--space-xs); }
+
+    .lede { margin-top: var(--space-lg); }
+    .lede .swatch { display: inline-block; width: 0.7em; height: 0.7em; border-radius: 2px; vertical-align: baseline; }
+
+    /* — controls — */
+    .controls {
+        margin-top: var(--space-lg);
+        border-top: var(--rule-hair) solid var(--color-rule);
+        border-bottom: var(--rule-hair) solid var(--color-rule);
+        padding: var(--space-sm) 0;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--space-xs) var(--space-lg);
+        font-family: var(--font-mono);
+        font-size: var(--text-sm);
+    }
+    .controls .group { display: flex; align-items: center; gap: var(--space-xs); min-width: 0; }
+    .controls .lbl { font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-ink-2); }
+    .controls label.opt { display: inline-flex; align-items: center; gap: var(--space-2xs); cursor: pointer; }
+    input[type="radio"] { accent-color: var(--color-accent); width: 1rem; height: 1rem; margin: 0; cursor: pointer; }
+    input[type="range"] { accent-color: var(--color-accent); width: 150px; max-width: 38vw; margin: 0; cursor: pointer; }
+    input[type="radio"]:disabled, input[type="range"]:disabled { cursor: not-allowed; opacity: 0.45; }
+    #thVal { min-width: 3.2ch; text-align: right; font-weight: 500; }
+
+    button.textlink {
+        font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase;
+        background: none; border: none; padding: 0; cursor: pointer;
+        color: var(--color-ink); text-decoration: underline; text-decoration-color: var(--color-accent);
+        text-underline-offset: 3px; text-decoration-thickness: 1px;
+    }
+    button.textlink:hover { color: var(--color-accent); text-decoration-thickness: 2px; }
+    button.textlink:active { color: var(--color-accent); }
+    button.textlink:disabled { color: var(--color-ink-2); text-decoration-color: var(--color-ink-2); cursor: not-allowed; }
+
+    /* — legend + stats — */
+    .legend { display: flex; flex-wrap: wrap; gap: var(--space-2xs) var(--space-lg); margin-top: var(--space-md); font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.06em; color: var(--color-ink-2); }
+    .legend .key { display: inline-flex; align-items: center; gap: var(--space-2xs); }
+    .legend .line { display: inline-block; width: 1.4em; height: 0; border-top: 2px solid; border-radius: 1px; }
+    .legend .line.thin { border-top-width: 1.5px; }
+    .stats { margin-top: var(--space-2xs); font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.06em; color: var(--color-ink-2); }
+    .stats strong { color: var(--color-ink); font-weight: 500; }
+
+    /* — chart — */
+    figure.chart { margin: var(--space-sm) 0 0; position: relative; border: var(--rule-hair) solid var(--color-rule); border-radius: var(--radius-img); background: var(--chart-paper); }
+    #chart { display: block; width: 100%; height: 340px; border-radius: var(--radius-img); touch-action: pan-y; }
+    #tooltip {
+        position: absolute; pointer-events: none; display: none;
+        background: var(--color-paper-raised); border: var(--rule-hair) solid var(--color-rule-strong); border-radius: 4px;
+        padding: var(--space-2xs) var(--space-xs);
+        font-family: var(--font-mono); font-size: var(--text-xs); line-height: 1.6; color: var(--color-ink); white-space: nowrap;
+    }
+    #tooltip .tt-kept { font-weight: 500; }
+
+    /* — table view — */
+    details.tableview { margin-top: var(--space-lg); font-family: var(--font-mono); font-size: var(--text-sm); }
+    details.tableview summary { cursor: pointer; font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-ink-2); }
+    details.tableview summary:hover { color: var(--color-accent); }
+    .tablewrap { max-height: 300px; overflow: auto; margin-top: var(--space-xs); border: var(--rule-hair) solid var(--color-rule); border-radius: 4px; }
+    .tablewrap table { border-collapse: collapse; width: 100%; }
+    .tablewrap th, .tablewrap td { text-align: right; padding: var(--space-2xs) var(--space-sm); border-bottom: var(--rule-hair) solid var(--color-rule); font-weight: 400; }
+    .tablewrap th { position: sticky; top: 0; background: var(--color-paper-2); font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-ink-2); }
+
+    .note { margin-top: var(--space-lg); font-size: var(--text-sm); color: var(--color-ink-2); }
+
+    /* — footer · Ft2 inline rule — */
+    footer {
+        max-width: var(--main-max-width); margin: var(--space-xl) auto 0;
+        padding: var(--space-md) var(--space-md) var(--space-xl);
+        border-top: var(--rule-hair) solid var(--color-rule-strong);
+        display: flex; align-items: center; justify-content: space-between; gap: var(--space-md);
+        font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-ink-2);
+    }
+    footer a { color: var(--color-ink-2); text-decoration: none; }
+    footer a:hover { color: var(--color-accent); text-decoration: underline; text-decoration-color: var(--color-accent); }
+    #themeToggle {
+        width: 1.9rem; height: 1.9rem; flex: none;
+        background: none; border: var(--rule-hair) solid var(--color-rule-strong); border-radius: 0;
+        color: var(--color-ink); font-size: 0.85rem; line-height: 1; cursor: pointer;
+        transition: color var(--dur-micro) var(--ease-out);
+    }
+    #themeToggle:hover { color: var(--color-accent); }
+    #themeToggle:active { color: var(--color-accent); border-color: var(--color-accent); }
+
+    /* entrance — one orchestrated rise-in, nothing animates on scroll */
+    @media (prefers-reduced-motion: no-preference) {
+        .rise { animation: rise var(--dur-long) var(--ease-out) backwards; }
+        .rise:nth-child(2) { animation-delay: 60ms; }
+        .rise:nth-child(3) { animation-delay: 120ms; }
+        @keyframes rise { from { opacity: 0; transform: translateY(10px); } }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        * { transition-duration: 150ms !important; animation: none !important; }
+    }
+
+    @media (max-width: 480px) {
+        body { font-size: 17px; }
+        #chart { height: 260px; }
+        .controls { gap: var(--space-xs) var(--space-md); }
+    }
+</style>
+</head>
+<body>
+<main>
+    <a class="backlink" href="/posts/largest-triangle-three-buckets-downsampling/">&larr; Back to the article</a>
+
+    <header class="masthead rise">
+        <h1>Largest Triangle Three Buckets, live</h1>
+        <p class="dateline">A companion to <a href="/posts/largest-triangle-three-buckets-downsampling/">the LTTB article</a> &middot; 5,000 points in, your call how many come out</p>
+    </header>
+
+    <p class="lede rise">The <span class="swatch" aria-hidden="true" style="background: var(--chart-context)"></span> gray line is 5,000 noisy points with a few sharp spikes. The colored line is what survives downsampling. Drag the threshold down to 50, then switch to every-Nth sampling and watch the spikes vanish while <span class="swatch" aria-hidden="true" style="background: var(--chart-lttb)"></span> LTTB keeps them.</p>
+
+    <div class="controls rise" role="group" aria-label="Downsampling controls">
+        <div class="group" role="radiogroup" aria-label="Method">
+            <span class="lbl" id="methodLbl">Method</span>
+            <label class="opt"><input type="radio" name="method" value="lttb" checked /> LTTB</label>
+            <label class="opt"><input type="radio" name="method" value="nth" /> every&nbsp;Nth</label>
+        </div>
+        <div class="group">
+            <label class="lbl" for="threshold">Keep</label>
+            <input type="range" id="threshold" min="10" max="500" step="10" value="100" />
+            <span id="thVal" aria-hidden="true">100</span>
+        </div>
+        <button class="textlink" id="regen" type="button">new data &raquo;</button>
+    </div>
+
+    <div class="legend" aria-hidden="true">
+        <span class="key"><span class="line thin" style="border-color: var(--chart-context)"></span> original &middot; 5,000 pts</span>
+        <span class="key" id="legendMethod"><span class="line" style="border-color: var(--chart-lttb)"></span> <span id="legendLabel">LTTB</span> &middot; <span id="legendCount">100</span> pts</span>
+    </div>
+
+    <figure class="chart">
+        <canvas id="chart" role="img" aria-label="Line chart comparing the original series with its downsampled version"></canvas>
+        <div id="tooltip"></div>
+    </figure>
+    <p class="stats" id="stats" aria-live="polite"></p>
+
+    <details class="tableview">
+        <summary>Kept points as a table</summary>
+        <div class="tablewrap" tabindex="0">
+            <table id="pointTable">
+                <thead><tr><th scope="col">x (index)</th><th scope="col">y (value)</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </details>
+
+    <p class="note">The LTTB implementation here is the one from the article, ported line for line. Every number on this page is computed in your browser on each change; nothing is precomputed.</p>
+</main>
+
+<footer>
+    <span>&copy; <a href="/">rajnandan.com</a> &middot; LTTB demo</span>
+    <button id="themeToggle" type="button" aria-label="Toggle dark mode">&#9680;</button>
+</footer>
+
+<script>
+"use strict";
+
+/* ------------------------------ algorithms ------------------------------ */
+
+// Ported from the article's TypeScript, types dropped.
+function largestTriangleThreeBuckets(data, threshold) {
+    const dataLength = data.length;
+    if (threshold >= dataLength) return data;
+    if (threshold <= 2) return [data[0], data[dataLength - 1]];
+
+    const sampled = [data[0]];
+    const bucketSize = (dataLength - 2) / (threshold - 2);
+    let a = 0;
+
+    for (let i = 0; i < threshold - 2; i++) {
+        let avgX = 0, avgY = 0;
+        const avgRangeStart = Math.floor((i + 1) * bucketSize) + 1;
+        const avgRangeEnd = Math.min(Math.floor((i + 2) * bucketSize) + 1, dataLength);
+        const avgRangeLength = avgRangeEnd - avgRangeStart;
+        for (let j = avgRangeStart; j < avgRangeEnd; j++) {
+            avgX += data[j].x;
+            avgY += data[j].y;
+        }
+        avgX /= avgRangeLength;
+        avgY /= avgRangeLength;
+
+        const rangeStart = Math.floor(i * bucketSize) + 1;
+        const rangeEnd = Math.floor((i + 1) * bucketSize) + 1;
+        const pointA = data[a];
+
+        let maxArea = -1, maxAreaPoint = 0;
+        for (let j = rangeStart; j < rangeEnd; j++) {
+            const area = Math.abs(
+                (pointA.x - avgX) * (data[j].y - pointA.y) -
+                (pointA.x - data[j].x) * (avgY - pointA.y)
+            ) * 0.5;
+            if (area > maxArea) { maxArea = area; maxAreaPoint = j; }
+        }
+        sampled.push(data[maxAreaPoint]);
+        a = maxAreaPoint;
+    }
+    sampled.push(data[dataLength - 1]);
+    return sampled;
+}
+
+function everyNth(data, threshold) {
+    const step = Math.ceil(data.length / threshold);
+    const out = [];
+    for (let i = 0; i < data.length; i += step) out.push(data[i]);
+    if (out[out.length - 1] !== data[data.length - 1]) out.push(data[data.length - 1]);
+    return out;
+}
+
+/* ------------------------------ data ------------------------------ */
+
+function mulberry32(seed) {
+    return function () {
+        seed |= 0; seed = (seed + 0x6d2b79f5) | 0;
+        let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+}
+
+const N = 5000;
+function generate(seed) {
+    const rnd = mulberry32(seed);
+    const data = new Array(N);
+    for (let i = 0; i < N; i++) {
+        const y = Math.sin(i / 120) * 40 + Math.sin(i / 37) * 8 + (rnd() - 0.5) * 8;
+        data[i] = { x: i, y };
+    }
+    // a handful of sharp spikes — the anomalies a dashboard must not hide
+    const spikes = 7;
+    for (let s = 0; s < spikes; s++) {
+        const at = 100 + Math.floor(rnd() * (N - 200));
+        const height = (30 + rnd() * 55) * (rnd() < 0.5 ? -1 : 1);
+        const width = 2 + Math.floor(rnd() * 3);
+        for (let w = 0; w < width; w++) {
+            data[at + w].y += height * (1 - w / width);
+        }
+    }
+    return data;
+}
+
+/* ------------------------------ state ------------------------------ */
+
+let seed = 1923;                 // fixed first paint; "new data" reseeds
+let data = generate(seed);
+let method = "lttb";
+let threshold = 100;
+let sampled = [];
+let computeMs = 0;
+
+function resample() {
+    const t0 = performance.now();
+    sampled = method === "lttb"
+        ? largestTriangleThreeBuckets(data, threshold)
+        : everyNth(data, threshold);
+    computeMs = performance.now() - t0;
+}
+
+/* ------------------------------ chart ------------------------------ */
+
+const canvas = document.getElementById("chart");
+const ctx = canvas.getContext("2d");
+const tooltip = document.getElementById("tooltip");
+const PAD = { top: 14, right: 14, bottom: 26, left: 46 };
+
+function cssVar(name) {
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+}
+
+function extent() {
+    let min = Infinity, max = -Infinity;
+    for (const p of data) { if (p.y < min) min = p.y; if (p.y > max) max = p.y; }
+    const pad = (max - min) * 0.06;
+    return [min - pad, max + pad];
+}
+
+function draw() {
+    const dpr = window.devicePixelRatio || 1;
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    if (canvas.width !== w * dpr || canvas.height !== h * dpr) {
+        canvas.width = w * dpr; canvas.height = h * dpr;
+    }
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+
+    const [yMin, yMax] = extent();
+    const px = x => PAD.left + (x / (N - 1)) * (w - PAD.left - PAD.right);
+    const py = y => PAD.top + (1 - (y - yMin) / (yMax - yMin)) * (h - PAD.top - PAD.bottom);
+
+    const gridColor = cssVar("--chart-grid");
+    const inkFaint = cssVar("--chart-context");
+    const methodColor = cssVar(method === "lttb" ? "--chart-lttb" : "--chart-nth");
+    const paper = cssVar("--chart-paper");
+
+    // recessive grid: 4 horizontal hairlines + mono labels, no spines
+    ctx.font = "10px " + cssVar("--font-mono");
+    ctx.fillStyle = cssVar("--chart-label");
+    ctx.strokeStyle = gridColor;
+    ctx.lineWidth = 1;
+    const ticks = 4;
+    for (let i = 0; i <= ticks; i++) {
+        const v = yMin + ((yMax - yMin) * i) / ticks;
+        const y = Math.round(py(v)) + 0.5;
+        ctx.beginPath(); ctx.moveTo(PAD.left, y); ctx.lineTo(w - PAD.right, y); ctx.stroke();
+        ctx.textAlign = "right"; ctx.textBaseline = "middle";
+        ctx.fillText(v.toFixed(0), PAD.left - 6, y);
+    }
+    ctx.textAlign = "center"; ctx.textBaseline = "top";
+    for (const xv of [0, 1250, 2500, 3750, 4999]) {
+        ctx.fillText(String(xv), px(xv), h - PAD.bottom + 8);
+    }
+
+    // original series — thin context line
+    ctx.strokeStyle = inkFaint;
+    ctx.lineWidth = 1.25;
+    ctx.beginPath();
+    for (let i = 0; i < N; i++) {
+        const X = px(data[i].x), Y = py(data[i].y);
+        i === 0 ? ctx.moveTo(X, Y) : ctx.lineTo(X, Y);
+    }
+    ctx.stroke();
+
+    // downsampled series — 2px line
+    ctx.strokeStyle = methodColor;
+    ctx.lineWidth = 2;
+    ctx.lineJoin = "round";
+    ctx.beginPath();
+    for (let i = 0; i < sampled.length; i++) {
+        const X = px(sampled[i].x), Y = py(sampled[i].y);
+        i === 0 ? ctx.moveTo(X, Y) : ctx.lineTo(X, Y);
+    }
+    ctx.stroke();
+
+    // markers with a paper ring, only while they stay readable
+    if (sampled.length <= 220) {
+        for (const p of sampled) {
+            const X = px(p.x), Y = py(p.y);
+            ctx.beginPath(); ctx.arc(X, Y, 3.5, 0, Math.PI * 2);
+            ctx.fillStyle = methodColor; ctx.fill();
+            ctx.lineWidth = 2; ctx.strokeStyle = paper; ctx.stroke();
+        }
+    }
+
+    canvas.setAttribute("aria-label",
+        "Line chart. Original series of 5,000 points drawn in gray; " +
+        (method === "lttb" ? "LTTB" : "every-Nth") + " downsample of " +
+        sampled.length + " points drawn on top.");
+}
+
+/* ------------------------------ tooltip ------------------------------ */
+
+function nearestIndex(arr, x) {
+    let lo = 0, hi = arr.length - 1;
+    while (hi - lo > 1) {
+        const mid = (lo + hi) >> 1;
+        arr[mid].x < x ? (lo = mid) : (hi = mid);
+    }
+    return x - arr[lo].x <= arr[hi].x - x ? lo : hi;
+}
+
+canvas.addEventListener("pointermove", e => {
+    const rect = canvas.getBoundingClientRect();
+    const w = canvas.clientWidth;
+    const frac = (e.clientX - rect.left - PAD.left) / (w - PAD.left - PAD.right);
+    if (frac < 0 || frac > 1) { tooltip.style.display = "none"; return; }
+    const x = Math.round(frac * (N - 1));
+    const orig = data[x];
+    const kept = sampled[nearestIndex(sampled, x)];
+    tooltip.innerHTML =
+        "x " + x +
+        "<br />original " + orig.y.toFixed(1) +
+        "<br /><span class=\"tt-kept\">kept x " + kept.x + " &middot; " + kept.y.toFixed(1) + "</span>";
+    tooltip.style.display = "block";
+    const tw = tooltip.offsetWidth;
+    const left = Math.min(Math.max(e.clientX - rect.left + 12, 0), w - tw - 4);
+    tooltip.style.left = left + "px";
+    tooltip.style.top = (e.clientY - rect.top - tooltip.offsetHeight - 12) + "px";
+});
+canvas.addEventListener("pointerleave", () => { tooltip.style.display = "none"; });
+
+/* ------------------------------ render ------------------------------ */
+
+const statsEl = document.getElementById("stats");
+const tbody = document.querySelector("#pointTable tbody");
+
+function render() {
+    resample();
+    draw();
+    const pct = (100 * (1 - sampled.length / N)).toFixed(1);
+    statsEl.innerHTML =
+        N.toLocaleString() + " pts &rarr; <strong>" + sampled.length.toLocaleString() +
+        " kept</strong> &middot; " + pct + "% fewer &middot; computed in " +
+        (computeMs < 0.05 ? "&lt;0.1" : computeMs.toFixed(1)) + " ms";
+    document.getElementById("legendLabel").textContent = method === "lttb" ? "LTTB" : "every Nth";
+    document.getElementById("legendCount").textContent = sampled.length;
+    document.querySelector("#legendMethod .line").style.borderColor =
+        "var(" + (method === "lttb" ? "--chart-lttb" : "--chart-nth") + ")";
+
+    const rows = sampled.map(p => "<tr><td>" + p.x + "</td><td>" + p.y.toFixed(2) + "</td></tr>");
+    tbody.innerHTML = rows.join("");
+}
+
+/* ------------------------------ controls ------------------------------ */
+
+document.querySelectorAll("input[name=method]").forEach(r =>
+    r.addEventListener("change", () => { method = r.value; render(); })
+);
+const slider = document.getElementById("threshold");
+slider.addEventListener("input", () => {
+    threshold = Number(slider.value);
+    document.getElementById("thVal").textContent = threshold;
+    render();
+});
+document.getElementById("regen").addEventListener("click", () => {
+    seed = (Math.random() * 2 ** 31) | 0;
+    data = generate(seed);
+    render();
+});
+new ResizeObserver(() => draw()).observe(canvas);
+
+document.getElementById("themeToggle").addEventListener("click", () => {
+    const dark = document.documentElement.classList.toggle("dark");
+    try { localStorage.setItem("theme", dark ? "dark" : "light"); } catch (e) {}
+    draw();
+});
+
+/* self-check: first/last preserved, output length equals threshold */
+(function () {
+    const t = largestTriangleThreeBuckets(data, 100);
+    console.assert(t.length === 100, "LTTB length");
+    console.assert(t[0] === data[0] && t[t.length - 1] === data[N - 1], "LTTB endpoints");
+})();
+
+render();
+</script>
+</body>
+</html>
