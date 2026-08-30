@@ -13,6 +13,14 @@ Here are few of my personal projects that I am working on. Some of them are at [
 
 ---
 
+### [ken](https://github.com/rajnandan1/ken)
+
+ken puts Ken Thompson's working method inside your coding agent: think first, steal proven ideas, build bottom-up, brute force until measured, and rewrite what rots instead of adding patch four. It installs as a plugin for Claude Code, Codex, Cursor, and a dozen other hosts. Every rule traces to Thompson's own words, and the benchmark publishes its reverts alongside its wins. [Read the introduction](/posts/introducing-ken/).
+
+![GitHub Repo stars](https://img.shields.io/github/stars/rajnandan1/ken?style=flat-square) ![NPM Downloads](https://img.shields.io/npm/dm/@rajnandan1/ken?label=NPM%20Downloads&color=blue&style=flat-square)
+
+---
+
 ### [Hop](https://github.com/rajnandan1/hop)
 
 Hop is a serverless URL shortener that runs entirely on GitHub — no server, no database, no secrets. You create short links by opening a GitHub issue; a workflow validates it, writes it to `urls.json`, and GitHub Pages serves the redirect.
