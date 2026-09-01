@@ -1,63 +1,108 @@
-/* Hallmark · theme: Newsprint · portable token block for rajnandan.com
- * Canonical copy lives inline in templates/_custom_css.html — keep in sync. */
+/* Kami (紙) · portable token block for rajnandan.com
+ * Canonical copy lives inline in templates/_custom_css.html — keep in sync.
+ * Spec: design.md · upstream: the kami plugin's references/design.md */
 
 :root {
-    /* colour — day edition */
-    --color-paper: oklch(97.5% 0.005 80);
-    --color-paper-2: oklch(94.6% 0.007 80);
-    --color-paper-raised: oklch(98.8% 0.005 80);
-    --color-ink: oklch(21% 0.012 60);
-    --color-ink-2: oklch(44% 0.014 70);
-    --color-rule: oklch(85.5% 0.009 80);
-    --color-rule-strong: oklch(38% 0.012 70);
-    --color-accent: oklch(45% 0.14 25);
-    --color-focus: oklch(50% 0.15 25);
-    --color-leader: color-mix(in oklab, var(--color-ink-2) 50%, transparent);
+    /* surface — day edition */
+    --color-bg: #f5f4ed; /* parchment  · page ground, never white */
+    --color-surface: #faf9f5; /* ivory      · quiet filled container */
+    --color-code-bg: #f0eee6; /* one warm step darker than parchment */
+    --color-control: #e8e6dc; /* warm sand  · interactive surface */
 
-    /* type */
-    --font-display: "DM Serif Display", ui-serif, Georgia, serif;
-    --font-body: "Source Serif 4", ui-serif, Georgia, serif;
-    --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+    /* text — four levels, every gray warm (R >= G > B) */
+    --color-text: #141413; /* near black · primary */
+    --color-text-2: #3d3d3a; /* dark warm  · secondary */
+    --color-text-3: #504e49; /* olive      · subtext, ledes, quotes */
+    --color-text-4: #6b6a64; /* stone      · metadata, labels */
 
-    --text-xs: 0.72rem;
-    --text-sm: 0.8rem;
-    --text-md: 1.2rem;
-    --text-lg: 1.5rem;
-    --text-display: clamp(2.3rem, 6vw, 3.9rem);
+    --color-border: #e8e6dc;
+    --color-border-soft: #e5e3d8;
 
-    /* space — 4pt named scale */
-    --space-2xs: 0.25rem;
-    --space-xs: 0.5rem;
-    --space-sm: 0.75rem;
-    --space-md: 1rem;
-    --space-lg: 1.5rem;
-    --space-xl: 2.5rem;
-    --space-2xl: 4rem;
+    /* the only chromatic colour — keep it under 5% of any viewport */
+    --color-brand: #1b365d; /* ink blue */
+    --color-brand-hover: #2d5a8a;
+    --color-brand-tint: #eef2f7;
+    --color-tag-bg: #e4ecf5;
 
-    /* motion */
-    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-    --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
-    --dur-micro: 120ms;
-    --dur-short: 220ms;
-    --dur-long: 420ms;
+    /* the one sanctioned warm accent (caution, stale-post notice) */
+    --color-warn: #8b4513;
+    --color-warn-bg: #f0e0d8;
 
-    /* rules + radii */
-    --rule-hair: 1px;
-    --radius-img: 6px;
-    --radius-code: 8px;
-    --radius-input: 4px;
+    /* code surface — a dark block on parchment, Kami's screen pattern */
+    --code-surface: #141318;
+    --code-fg: #d4d1c8;
+    --code-faint: #948e80; /* Kami's #79756a reads under 4:1 on the block */
+    --code-rule: #2a2a2e;
+    --code-mark: #26303f;
+    --code-keyword: #84aad6;
+    --code-string: #8cbb91;
+    --code-number: #cbab86;
+    --code-function: #d6c78c;
+    --code-builtin: #b59ccd;
+    --code-deleted: #c08a7d;
+
+    /* type — one serif carries headings and body; ui sans is chrome only */
+    --font-serif:
+        "Source Serif 4", Charter, Georgia, Palatino, "Times New Roman", serif;
+    --font-ui: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    --font-mono:
+        "JetBrains Mono", "SF Mono", "Fira Code", Consolas, Monaco, monospace;
+
+    --text-label: 12px; /* uppercase overlines only */
+    --text-meta: 13px;
+    --text-small: 14px;
+    --text-ui: 15px;
+    --text-body: 18px;
+    --text-lede: 21px;
+    --text-h3: 22px;
+    --text-h2: 30px;
+    --text-h1: clamp(30px, 5vw, 36px);
+    --text-display: clamp(30px, 6vw, 56px);
+
+    /* space — 4px base */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 40px;
+    --space-2xl: 64px;
+    --space-3xl: 96px;
+
+    --radius-sm: 2px; /* inline code */
+    --radius-md: 4px; /* tags */
+    --radius-lg: 8px; /* blocks, images, cards */
+    --radius-pill: 999px; /* pill actions only */
+
+    --dur: 150ms;
 }
 
 [data-theme="dark"],
 .dark {
-    /* colour — night edition (same hues; lightness/chroma only) */
-    --color-paper: oklch(17% 0.01 70);
-    --color-paper-2: oklch(21% 0.012 72);
-    --color-paper-raised: oklch(23% 0.012 72);
-    --color-ink: oklch(92% 0.008 80);
-    --color-ink-2: oklch(71% 0.012 78);
-    --color-rule: oklch(33% 0.012 75);
-    --color-rule-strong: oklch(76% 0.01 78);
-    --color-accent: oklch(64% 0.12 27);
-    --color-focus: oklch(68% 0.13 27);
+    /* night edition — warm charcoals, ink blue lifted for contrast */
+    --color-bg: #141413; /* deep dark · warm, not black */
+    --color-surface: #1c1b19;
+    --color-code-bg: #23221f;
+    --color-control: #30302e;
+
+    --color-text: #faf9f5;
+    --color-text-2: #d4d1c8;
+    --color-text-3: #b0aea5;
+    --color-text-4: #8f8d85;
+
+    --color-border: #302f2b;
+    --color-border-soft: #262521;
+
+    /* Kami's #2D5A8A reaches only 2.6:1 on #141413; these clear AA. */
+    --color-brand: #7fa6ce;
+    --color-brand-hover: #a3c1e0;
+    --color-brand-tint: #1e2a38;
+    --color-tag-bg: #1e2a38;
+
+    --color-warn: #d9a273;
+    --color-warn-bg: #2c231c;
+
+    /* the page is already darker than the light-mode code block, so the
+     * block steps up instead of down or it stops reading as a container */
+    --code-surface: #23221f;
+    --code-rule: #35332e;
 }

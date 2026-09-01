@@ -6,8 +6,7 @@ lang = "en"
 footer = true
 
 name = "Raj Nandan Sharma"
-id = "rajnandan1"
-bio = "Tech enthusiast • Go, Svelte, NodeJS, TypeScript • Product Engineer @ Crustdata"
+bio = "Generalist Software Engineer"
 avatar = "img/avatar.jpg"
 
 links = [
