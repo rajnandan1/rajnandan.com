@@ -49,9 +49,9 @@ That was the first time any of them reached a hand past the edge of the Trials. 
 
 ## June 26, 1879
 
-What they wanted next was the depot itself. A crackerman noticed that the Ash Hollow clerk, when his shift-pass went stale, renewed it by a rote exchange any customer at the counter could mimic. Say the right words in the right order, in the clerk's own name, and the counter handed you back a fresh pass cut to the clerk's ring of keys. The man who found this could barely write it down for muttering to himself. *The counter thinks I am the keeper. We can read the whole book. We can cut ourselves a keeper's pass and change what we please.*
+What the men wanted next was the depot itself. A crackerman noticed that the Ash Hollow clerk, when his shift-pass wore out, renewed it by a set exchange of words at the counter, the same words every time, spoken in the clerk's own name. Any customer who said them in the right order got back a fresh pass, cut to the clerk's own ring of keys. The man who found this could hardly write it down for muttering to himself. *The counter takes me for the keeper. We can read the whole book. We can cut ourselves a keeper's pass and change whatever we please.*
 
-With a keeper's ring a man was no longer a customer at Ash Hollow. He was behind the counter. He could open bins that were meant to stay shut, read the ledger of who had ordered what, and leave his own goods on the shelves for others to find. The pigeonhole wall had been a convenience. Now it was a town square with a printing press, and the men who met there had the run of the building it stood in.
+A man with a keeper's pass was no longer a customer at Ash Hollow. He stood behind the counter. He could open bins that were meant to stay shut, read the ledger of who had ordered what, and leave his own goods on the shelves for the others to find. The pigeonhole wall had been a convenience. Now it was a town square with a printing press, and the men who met there had the run of the whole building.
 
 ## July 4, 1879
 
