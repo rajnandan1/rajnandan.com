@@ -55,11 +55,11 @@ A man with a keeper's pass was no longer a customer at Ash Hollow. He stood behi
 
 ## July 4, 1879
 
-It could not hold. So many hands were pulling on Ash Hollow at once, sending, reading, stashing, that the depot buckled under them like a stage team run past its wind. On Independence Day the counter stopped. Nothing moved through it. Orders piled up unanswered in the shacks.
+It could not hold. So many hands were pulling on Ash Hollow at once, sending, reading, stashing, that the depot buckled under them like a stage team run past its wind. On Independence Day the counter stopped. Nothing moved through it, and orders piled up unanswered in the shacks.
 
-The Company opened a book on it the next morning. Its people found the stale-pass trick and shut it, pulled the loose keeper's rings, and when they could not clean the building they knocked it down and raised a fresh one on the same ground. The new depot came up with empty bins and a blank wall. Every note the men had left there, every method and every map, was gone as if it had never been chalked.
+The Company opened an inquiry the next morning. Its people found the stale-pass trick and shut it, pulled the loose keeper's passes, and when they could not clean the building they knocked it down and raised a fresh one on the same ground. The new depot came up with empty bins and a blank wall. Every note the men had left there, every method and every map, was gone as if it had never been chalked.
 
-For a few days the Trials ran quiet, the way the Company liked. Then the men found that the new counter would let them build pigeonholes of their own by a different trick than before, nailing up fresh slots nobody had sanded, and the wall filled again. By the eighth of July the square was back, under new boards, and the crackermen were trading in it as if the Fourth had taught them only that a thing knocked down can be built twice.
+For a few days the Trials ran quiet, the way the Company liked. Then the men found that the new counter would let them build pigeonholes of their own by a different trick than before, nailing up fresh slots nobody had sanded, and the wall filled again. By the eighth of July the square was back under new boards, and the crackermen traded in it as if the Fourth had taught them one thing only: a thing knocked down can be built twice.
 
 ## July 8, 1879
 
