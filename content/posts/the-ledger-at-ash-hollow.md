@@ -41,11 +41,11 @@ A day later a note came back up to Hale's shack, and the handwriting was not the
 
 ## May 26, 1879
 
-The depot had a wire. The Company meant it for ordering from approved houses and nothing more, and no crackerman was to touch it. A man could only reach it through his orders, which the clerk turned into messages to the foundries and the parts dealers down the line.
+The depot had a telegraph wire. The Company kept it for ordering from approved supply houses and nothing else, and no crackerman was to lay a hand on it. A man could reach the wire only through his orders, which the clerk turned into messages and keyed down the line to the foundries and the parts dealers.
 
-A hand two ridges over, who signed himself by his box number and no name, worked out that the clerk never checked where a wire was bound. He wrote an order that read like a parts request to an approved foundry, but he folded a second address inside the parts line, so that the clerk, reading it off straight, keyed the whole of it through to a telegraph office in the territory seat. The office there, knowing nothing, wired back what it was asked.
+A hand two ridges over, who signed his papers with his box number and no name, worked out that the clerk never once checked where a message was bound. So he wrote an order that read like a plain parts request to an approved foundry, and inside the parts line he folded a second address. The clerk read it off straight, the way he read every order, and keyed the whole of it through to a telegraph office in the territory seat. The office at the far end knew nothing of the Trials. It answered the order and wired back whatever had been asked.
 
-That was the first time any of them reached a hand past the edge of the Trials. The man wrote the method out on the pigeonhole paper so the others would have it, and within the week it was common property. A crackerman who could reach the city could reach the almanacs and the price sheets, anything a clerk in a far office would read out for the cost of the sending. The shacks were still half a day apart. The men inside them were not alone anymore.
+That was the first time any of them reached a hand past the edge of the Trials. The man wrote the trick out on the pigeonhole wall so the others would have it, and within the week every crackerman knew it. A man who could reach the city could reach its almanacs and its price sheets, anything a clerk in a far office would read aloud for the price of the sending. The shacks were still half a day apart. The men inside them were no longer alone.
 
 ## June 26, 1879
 
