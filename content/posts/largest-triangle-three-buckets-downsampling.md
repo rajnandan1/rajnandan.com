@@ -66,7 +66,7 @@ Unlike random sampling, LTTB always produces the same output for the same input.
 3. First and last points are always included, so the chart keeps the full x range of the data
 
 **Process:**
-1. Divide remaining N-2 points into M-2 buckets
+1. Set the first and last points aside, and divide the remaining N-2 points into M-2 buckets
 2. Always include the first point
 3. For each bucket:
    - Look at the previously selected point (from bucket i-1)
@@ -87,7 +87,7 @@ For Bucket 2:
 - Next bucket average (C): avg(Bucket 3 points)
 - Keep the point from Bucket 2 (B) that makes the largest triangle
 
-For Bucket 1, A is the first point. The code numbers the buckets from 0, so Bucket 1 in this diagram is `i = 0` in the code below.
+For Bucket 1, A is the first point. The code numbers the buckets from 0, so Bucket 1 in this diagram is i = 0 in the code below.
 ```
 
 ## TypeScript Implementation
@@ -188,7 +188,7 @@ export function largestTriangleThreeBuckets(
 }
 ```
 
-Bucket ranges start at index 1 because the first point is kept on its own. For the last bucket, the average range is clamped to `dataLength`, so point C is the last point.
+Bucket ranges start at index 1 because the first point is kept on its own. For the last bucket, the range of points averaged into C is clamped to `dataLength`, so C is the last point itself.
 
 ### Example Usage
 
@@ -381,7 +381,7 @@ app.get('/api/metrics/:id', async (req, res) => {
 // BAD: Statistical analysis on downsampled data
 const downsampled = largestTriangleThreeBuckets(data, 1000);
 const biasedAverage = downsampled.reduce((s, p) => s + p.y, 0) / downsampled.length;
-// ❌ This average is WRONG - biased toward peaks/valleys
+// ❌ Biased toward peaks/valleys ("Loss of Statistical Properties" measures how much)
 
 // GOOD: Calculate stats on full data
 const average = data.reduce((s, p) => s + p.y, 0) / data.length;
@@ -492,10 +492,10 @@ sizes.forEach(size => {
 // 10,000,000 points: 44.07ms
 ```
 
-For 10M points, 44ms is longer than the 16ms a browser has to draw one frame at 60 fps, so running it on the main thread drops frames. Three ways to keep the page responsive:
+For 10M points, 44ms is longer than the 16ms a browser has to draw one frame at 60 fps, so running it on the main thread drops frames. These timings come from Node, which uses the same V8 engine as Chrome; Safari and Firefox use other engines, so time it there too. Three ways to keep the page responsive:
 - **Pre-compute:** Downsample on the backend and cache the results
 - **Web Workers:** Run LTTB on a background thread
-- **Progressive loading:** Draw a low-threshold downsample first, then compute the full one when the browser is idle (for example with `requestIdleCallback`)
+- **Progressive loading:** Draw a low-threshold downsample first, then compute the downsample at your full threshold when the browser is idle (for example with `requestIdleCallback`)
 
 `postMessage` copies whatever you send to a worker. In Node v24.18.1 on the same Apple M4, `structuredClone`, the copy that `postMessage` makes, took about 4 seconds for the 10M point objects from `generateTimeSeriesData(10_000_000)` (median of 3 runs), far more than the 44ms that LTTB needs. So load the data inside the worker and send back only the downsampled points. The example assumes `/data/cpu-full.json` holds an array of `{ x, y }` points. The fetch and JSON parse still take time, but they run in the worker, off the main thread:
 
@@ -529,7 +529,7 @@ The biggest limitation is that downsampled data looks right on a chart and gives
 | Min | -50.00 | -49.99 | 0.0% |
 | Max | 59.99 | 59.99 | 0.0% |
 
-**Why:** LTTB favors extremes. Here each bucket of 1,000 points spans more than one full sine wave (one wave is about 628 points), so LTTB keeps points near the peaks and troughs, which sit far from the mean, and the standard deviation grows by about half. The minimum and maximum survive in this run, but LTTB does not guarantee that: the example under "When You Need Exact Points" shows it dropping the maximum.
+**Why:** LTTB favors extremes. The test data is a sine wave plus noise, and one wave is 2π × 100 ≈ 628 points. The 1,000,000 points go into 998 buckets of about 1,000 points each, so each bucket spans more than one full wave, so LTTB keeps points near the peaks and troughs, which sit far from the mean, and the standard deviation grows by about half. The minimum and maximum survive in this run, but LTTB does not guarantee that: the example under "When You Need Exact Points" shows it dropping the maximum.
 
 **Solution:** keep two views of the data: the downsampled points for charts and the full data for calculations:
 
@@ -625,7 +625,7 @@ class StreamingLTTB {
 }
 ```
 
-Before the first 100 points arrive, `getView()` returns an empty array, and between recomputes it returns the last result. Once the window is full, every new point costs one LTTB pass over 10,000 points (0.29ms on an Apple M4, from the benchmark above) plus a `shift()`, which is O(n) on an array. The bucket boundaries move as the window slides, so the kept points can change between recomputes and the line may shift slightly from one update to the next. Unlike `MetricsBuffer`, which keeps a downsampled history of everything, this class shows only the latest 10,000 points.
+Before the first 100 points arrive, `getView()` returns an empty array. Until the buffer passes 1,000 points, LTTB returns the buffer array itself, so `getView()` returns the live buffer, new points included. From the recompute at 1,100 points on, it returns the last result between recomputes. Once the window is full, every new point costs one LTTB pass over 10,000 points (0.29ms on an Apple M4, from the benchmark above) plus a `shift()`, which is O(n) on an array. The bucket boundaries move as the window slides, so the kept points can change between recomputes and the line may shift slightly from one update to the next. Unlike `MetricsBuffer`, which keeps a downsampled history of everything, this class shows only the latest 10,000 points.
 
 ## Comparison with Other Downsampling Methods
 
@@ -633,7 +633,7 @@ Before the first 100 points arrive, `getView()` returns an empty array, and betw
 |--------|------|------|----------|
 | **Every Nth** | Simplest, O(M) for M kept points | Misses peaks/valleys | Never for charts (use LTTB instead) |
 | **Random Sampling** | Unbiased estimates of stats | Unpredictable visual | Estimating statistics from a sample |
-| **Min-Max** | Preserves extremes | Loses smooth curves | Range-bound displays |
+| **Min-Max** | Preserves extremes | Loses smooth curves | Charts that must show the true min and max |
 | **LTTB** | Visual fidelity, O(n) | Stats biased | Time-series charts |
 | **M4** (an algorithm, not the Apple chip; Jugel et al., VLDB 2014) | Very fast, keeps extremes | Tied to the chart's pixel width | High-frequency data |
 
@@ -650,7 +650,7 @@ Min-Max keeps the smallest and largest value in each bucket. M4 splits the data 
 Before deploying LTTB in production:
 
 - [ ] Verify input data is sorted by x-axis (time)
-- [ ] Add tests for empty arrays, single points and threshold >= data length, so a future change to the function cannot break them
+- [ ] Add tests for empty arrays, single points and threshold >= data length, so the tests catch any future change that breaks that handling
 - [ ] Add input validation: non-null points, valid numbers
 - [ ] Consider pre-computing and caching downsampled views
 - [ ] Use Web Workers when one run takes longer than a 16ms frame on your users' devices (on an Apple M4, that happens between 1M and 10M points)
