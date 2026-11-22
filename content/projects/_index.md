@@ -13,6 +13,14 @@ Here are few of my personal projects that I am working on. Some of them are at [
 
 ---
 
+### [tagore](https://github.com/rajnandan1/tagore)
+
+tagore is a Claude Code plugin for the prose that Claude writes for other people: PR descriptions, READMEs, docs and the replies Claude writes to you. The `fair-copy` skill rewrites the sentence patterns that make text read as model-written, then checks the rewrite for lost or invented facts. A Stop hook makes a fresh subagent read the Markdown and HTML files that changed before Claude can end its turn, and the `straight-talk` output style puts the answer in the first sentence of each reply. It is inspired by Oskar Austegard's declauding skill. [Read the introduction](/posts/introducing-tagore/).
+
+![GitHub Repo stars](https://img.shields.io/github/stars/rajnandan1/tagore?style=flat-square)
+
+---
+
 ### [ken](https://github.com/rajnandan1/ken)
 
 ken puts Ken Thompson's working method inside your coding agent: think first, steal proven ideas, build bottom-up, brute force until measured, and rewrite what rots instead of adding patch four. It installs as a plugin for Claude Code, Codex, Cursor, and a dozen other hosts. Every rule traces to Thompson's own words, and the benchmark publishes its reverts alongside its wins. [Read the introduction](/posts/introducing-ken/).
